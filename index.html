@@ -9,9 +9,6 @@
     <meta property="og:description" content="Almancayı mantığıyla öğren." />
     <link rel="icon" type="image/png" href="./og.png" />
     <title>AYDA A1 Online Alıştırma</title>
-    <script type="module" crossorigin src="./assets/index-C7-srDCQ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BWBvcN9p.css">
-
     <style>
       #aydaLoginBox {
         position: fixed;
@@ -19,7 +16,9 @@
         z-index: 999999;
         display: grid;
         place-items: center;
-        padding: 20px;
+        min-height: 100dvh;
+        padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+        overflow-y: auto;
         background:
           radial-gradient(circle at top left, rgba(35, 64, 120, 0.14), transparent 34%),
           linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
@@ -28,12 +27,11 @@
       }
 
       #aydaLoginBox .ayda-login-card {
-        width: 100%;
-        max-width: 430px;
+        width: min(100%, 430px);
         background: #ffffff;
         border: 1px solid #dce3f0;
         border-radius: 28px;
-        padding: 26px;
+        padding: clamp(22px, 5vw, 30px);
         box-shadow: 0 20px 50px rgba(35, 64, 120, 0.18);
       }
 
@@ -53,7 +51,7 @@
       #aydaLoginBox h1 {
         margin: 0 0 8px;
         color: #172b52;
-        font-size: 25px;
+        font-size: clamp(22px, 6vw, 25px);
         line-height: 1.2;
         letter-spacing: -0.03em;
       }
@@ -73,6 +71,7 @@
       #aydaPasswordInput {
         flex: 1;
         min-width: 0;
+        min-height: 50px;
         border: 1px solid #dce3f0;
         border-radius: 16px;
         padding: 14px 15px;
@@ -89,6 +88,7 @@
       }
 
       #aydaLoginBox .ayda-login-btn {
+        min-height: 50px;
         border: 0;
         border-radius: 16px;
         padding: 0 18px;
@@ -99,9 +99,8 @@
         cursor: pointer;
       }
 
-      #aydaLoginBox .ayda-login-btn:hover {
-        background: #172b52;
-      }
+      #aydaLoginBox .ayda-login-btn:hover { background: #172b52; }
+      #aydaLoginBox .ayda-login-btn:focus-visible { outline: 3px solid #79a7f0; outline-offset: 3px; }
 
       #aydaLoginMessage {
         min-height: 18px;
@@ -111,20 +110,25 @@
         font-weight: 700;
       }
 
-      #aydaProtectedContent {
-        display: none;
-      }
+      #aydaProtectedContent { display: none; }
 
       @media (max-width: 680px) {
-        #aydaLoginBox .ayda-password-row {
-          flex-direction: column;
-        }
+        #aydaLoginBox .ayda-password-row { flex-direction: column; }
+        #aydaLoginBox .ayda-login-btn { padding: 14px 18px; }
+      }
 
-        #aydaLoginBox .ayda-login-btn {
-          padding: 14px 18px;
-        }
+      @media (max-width: 360px) {
+        #aydaLoginBox { padding: 12px; }
+        #aydaLoginBox .ayda-login-card { border-radius: 20px; padding: 20px; }
+      }
+
+      @media (max-height: 520px) and (orientation: landscape) {
+        #aydaLoginBox { place-items: start center; }
+        #aydaLoginBox .ayda-login-logo { width: 46px; height: 46px; margin-bottom: 10px; border-radius: 14px; }
       }
     </style>
+    <script type="module" crossorigin src="./assets/index-DRCE9iGL.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-OVjCbFV6.css">
   </head>
   <body>
 
@@ -134,7 +138,7 @@
         <h1>AYDA A1 Online Alıştırma</h1>
         <p>Devam etmek için size verilen sınıf kodunu veya giriş parolasını yazınız.</p>
 
-        <div class="ayda-password-row">
+        <form class="ayda-password-row" onsubmit="aydaCheckPassword(); return false;">
           <input
             id="aydaPasswordInput"
             type="password"
@@ -142,8 +146,8 @@
             autocomplete="off"
             aria-describedby="aydaLoginMessage"
           />
-          <button class="ayda-login-btn" type="button" onclick="aydaCheckPassword()">Giriş</button>
-        </div>
+          <button class="ayda-login-btn" type="submit">Giriş</button>
+        </form>
 
         <div id="aydaLoginMessage" role="status" aria-live="polite"></div>
       </div>
@@ -157,6 +161,5 @@
       src="https://onurqlp.github.io/ayda-pass/access-control.js"
       onerror="document.getElementById('aydaLoginMessage').textContent='Şifre sistemi yüklenemedi.'"
     ></script>
-
   </body>
 </html>
