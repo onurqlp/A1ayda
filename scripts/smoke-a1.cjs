@@ -61,7 +61,7 @@ async function main(){
    document.getElementById("aydaProtectedContent").style.display="block";
   });
   await page.waitForSelector("#aydaA1Journey",{timeout:8000});
-  assert.equal(await page.$eval("#aydaA1Journey .ayda-a1-journey-step",els=>els.length),3,
+  assert.equal(await page.$eval("#aydaA1Journey",root=>root.querySelectorAll(".ayda-a1-journey-step").length),3,
     "A1 homepage must show the three-step learning pathway.");
   await page.waitForFunction(()=>document.querySelector(".site-header .brand")?.classList.contains("ayda-logo-applied"));
   await fs.promises.mkdir(path.join(root,"screenshots"),{recursive:true});
