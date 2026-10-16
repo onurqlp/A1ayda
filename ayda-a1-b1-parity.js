@@ -52,6 +52,9 @@ function navButton(viewName){
  return $$(".bottom-nav button").find(b=>b.textContent?.includes(names[viewName]||"-----"));
 }
 async function openView(destination){
+ // Student taps may occur during the previous React navigation frame.
+ // Queue the new request rather than silently ignoring the tap.
+ if(state.working)await waitFor(()=>!state.working,130);
  if(state.working)return false;
  state.working=true;
  try{
