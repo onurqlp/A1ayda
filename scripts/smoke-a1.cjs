@@ -44,6 +44,17 @@ async function main(){
  try{
   await page.goto("http://127.0.0.1:"+port+"/preview/",{waitUntil:"domcontentloaded"});
   await page.waitForSelector(".hero-card .primary-button",{timeout:15000});
+  await page.waitForSelector("#aydaA1Journey",{timeout:8000});
+  assert.equal(await page.$$eval("#aydaA1Journey .ayda-a1-journey-step",els=>els.length),3,
+    "A1 homepage must show the three-step learning pathway.");
+  assert.ok(await page.$eval("#aydaLoginBox .ayda-login-logo",
+     node=>getComputedStyle(node).backgroundImage.includes("data:image/png")),
+    "Real AYDA logo should appear on protected entry card.");
+  assert.ok(await page.$eval(".hero-card",node=>node.getBoundingClientRect().height<470),
+    "The A1 homepage hero must be compact, not a giant empty banner.");
+  assert.ok(await page.$eval(".site-header",
+     node=>getComputedStyle(node).backgroundColor==="rgb(11, 27, 49)"),
+    "A1 header must use the same deep navy as the B1 design system.");
   assert.ok(await page.$eval("#aydaProtectedContent",node=>getComputedStyle(node).display==="none"),
    "Unauthenticated students must not see learning content");
   assert.ok(await page.$eval("#aydaA1QuickDock",node=>node.hidden),
@@ -52,6 +63,9 @@ async function main(){
    document.getElementById("aydaLoginBox").style.display="none";
    document.getElementById("aydaProtectedContent").style.display="block";
   });
+  await page.waitForFunction(()=>document.querySelector(".site-header .brand")?.classList.contains("ayda-logo-applied"));
+  await fs.promises.mkdir(path.join(root,"screenshots"),{recursive:true});
+  await page.screenshot({path:path.join(root,"screenshots","a1-home-mobile.png"),fullPage:false});
   await page.$eval(".hero-card .primary-button",button=>button.click());
   await page.waitForSelector(".unit-intro");
   await page.waitForSelector("#aydaA1StudyNav",{timeout:7000}).catch(async error=>{
@@ -67,6 +81,10 @@ async function main(){
   });
   assert.equal(await page.$$eval("#aydaA1StudyNav [data-a1-tab]",a=>a.length),3,
     "Three in-page study tabs are required.");
+  await page.waitForSelector(".ayda-a1-study-meta");
+  assert.ok(await page.$eval(".ayda-a1-study-meta",node=>node.textContent.includes("24 soru")),
+    "Learning route must clearly announce 24 questions and four mini sets.");
+  await page.screenshot({path:path.join(root,"screenshots","a1-lesson-mobile.png"),fullPage:false});
   assert.ok(await page.$eval(".logic-explainer",node=>getComputedStyle(node).display!=="none"),
     "Full original explanation must show on Learn tab");
   assert.ok(await page.$eval("#aydaA1TeacherNote",node=>getComputedStyle(node).display!=="none"),
@@ -126,6 +144,9 @@ async function main(){
    if(!expanded)await page.$eval(header,b=>b.click());
    const selector=".module:nth-child("+module+") .unit-card:nth-child("+(index+1)+") .secondary-button";
    await page.waitForSelector(selector);
+   await page.waitForSelector(".module:nth-child("+module+") .unit-card .ayda-a1-card-flow",{timeout:8000});
+   assert.equal(await page.$eval(".module:nth-child("+module+") .unit-card:nth-child("+(index+1)+") .ayda-a1-card-flow",n=>n.querySelectorAll("span").length),3,
+     "A1 unit catalog must show Learn / Video / Practice stages.");
    await page.$eval(selector,b=>b.click());
    await page.waitForFunction(id=>{
     const t=document.querySelector(".unit-intro__number")?.textContent||"";
@@ -167,12 +188,24 @@ async function main(){
     "Existing A1 progress should resume on question 8");
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+3),false,
     "The mobile page must not overflow horizontally");
-  await fs.promises.mkdir(path.join(root,"screenshots"),{recursive:true});
   await page.screenshot({path:path.join(root,"screenshots","a1-mobile-preview.png"),fullPage:false});
+  // The compact navigation must never cover answer checking on a narrow phone.
+  await page.setViewport({width:320,height:680,deviceScaleFactor:1});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+3),false,
+    "320px-wide screens must not scroll horizontally.");
+  assert.ok(await page.$eval(".exercise-shell .exercise-action",
+    node=>getComputedStyle(node).position==="static"),
+    "The answer-checking action must not be obscured by fixed bottom navigation.");
+  await page.setViewport({width:1280,height:800,deviceScaleFactor:1});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+3),false,
+    "Desktop A1 view must not overflow horizontally.");
+  assert.ok(await page.$eval(".site-header",node=>getComputedStyle(node).position==="sticky"),
+    "Unified desktop header should be sticky.");
   assert.deepEqual(errors,[],"Unexpected JavaScript exceptions");
   console.log("PASS: 24 units × 3 original video links, original teaching and 24 supplemental notes.");
   console.log("PASS: learn/video/practice tabs, inline Drive embed, next-step buttons, four six-question phases.");
-  console.log("PASS: preserved old progress, mobile viewport, original answer checking, protected login.");
+  console.log("PASS: preserved old progress, mobile and desktop viewports, original answer checking, protected login.");
+  console.log("PASS: B1-aligned institute brand, compact home/catalog layout and accessible three-step journey.");
  }finally{await browser.close();server.close()}
 }
 main().catch(error=>{console.error(error);server.close();process.exitCode=1;});

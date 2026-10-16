@@ -21,11 +21,24 @@ identical("og.png","preview/og.png",
  "bc5c41f82a7d2cb8d43178a1778375e86c890c18","A1 original social artwork");
 const html=read("preview/index.html").toString("utf8");
 for(const source of ["./assets/index-DRCE9iGL.js","./assets/index-OVjCbFV6.css",
- "./ayda-a1-hybrid.css","./ayda-a1-hybrid.js","./og.png",
+ "./ayda-a1-hybrid.css","./ayda-a1-hybrid.js",
+ "./ayda-a1-unified.css","./ayda-a1-unified.js","./ayda-brand.js","./og.png",
  "https://onurqlp.github.io/ayda-pass/access-control.js"]){
  assert.ok(html.includes(source),"Preview is missing "+source);
 }
 assert.ok(html.includes("noindex,nofollow"),"Preview should not be indexed");
+const brand=read("preview/ayda-brand.js");
+assert.equal(sha(brand),"2909497e6cd9d7265cbaac56dabba3eff80e7218",
+ "Owner-approved AYDA logo must match unchanged B1 asset");
+const unifiedCss=read("preview/ayda-a1-unified.css").toString("utf8");
+for(const color of ["#0b1b31","#102541","#e8c37b","#fbf9f5"]){
+ assert.ok(unifiedCss.toLowerCase().includes(color),"Missing shared AYDA design token "+color);
+}
+const unifiedJs=read("preview/ayda-a1-unified.js").toString("utf8");
+assert.ok(unifiedJs.includes("ayda-a1-card-flow")&&unifiedJs.includes("ayda-a1-journey"),
+ "Shared learning journey UI missing");
+assert.ok(unifiedJs.includes("aydaA1SetBreak"),
+ "Six-question mini-set completion guidance missing");
 const bundle=read("preview/assets/index-DRCE9iGL.js").toString("utf8");
 for(let i=1;i<=24;i++)assert.match(bundle,new RegExp("number:"+i+"(?:,|})"),"Unit "+i+" missing");
 assert.ok(bundle.includes("ayda-a1-progress-v3"),"Original progress key was removed");
