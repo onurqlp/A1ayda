@@ -67,6 +67,53 @@ async function main(){
   await page.waitForFunction(()=>document.querySelector(".site-header .brand")?.classList.contains("ayda-logo-applied"));
   await fs.promises.mkdir(path.join(root,"screenshots"),{recursive:true});
   await page.screenshot({path:path.join(root,"screenshots","a1-home-mobile.png"),fullPage:false});
+  // B1-style parity: navigation names, direct 24-unit catalog, filters, extra A1 menus.
+  await page.waitForSelector("#aydaA1B1Grid",{timeout:10000});
+  await page.waitForSelector(".ayda-b1-main-nav");
+  assert.deepEqual(await page.$$eval(".ayda-b1-main-nav > button",els=>els.map(x=>x.textContent.trim())),
+    ["Video + Alıştırma","AYDA Kaynakları","İlerleme"],
+    "A1 top-level menu must match B1 labels and order.");
+  assert.equal(await page.$$eval("#aydaA1B1Grid .unitCard",e=>e.length),24,
+    "B1-style homepage must show 24 original A1 units directly.");
+  assert.equal(await page.$$eval("#kaynaklar .resourceCard",e=>e.length),3,
+    "B1-style AYDA resources block should display 3 destinations.");
+  assert.ok(await page.$eval(".bottom-nav",node=>getComputedStyle(node).display==="none"),
+    "A1's old bottom navigation must no longer visually conflict with the B1-style top navigation.");
+  assert.ok(await page.$eval("#aydaA1B1StudyCard",n=>n.textContent.includes("/24")),
+    "Unified B1-style hero should contain A1 progress summary.");
+  await page.$eval('.ayda-b1-catalog .filterTabs button[data-filter="a12"]',b=>b.click());
+  assert.deepEqual(await page.$$eval("#aydaA1B1Grid .unitCard",els=>els.map(x=>Number(x.dataset.unit))),
+    Array.from({length:12},(_,i)=>i+13),"A1.2 filter should select units 13–24.");
+  await page.$eval('.ayda-b1-catalog .filterTabs button[data-filter="all"]',b=>b.click());
+  assert.equal(await page.$$eval("#aydaA1B1Grid .unitCard",e=>e.length),24,
+    "All-units filter must restore the complete 24-unit catalog.");
+  // Card 13 must open the true React unit 13: this is real navigation, not a dummy link.
+  await page.$eval('#aydaA1B1Grid .unitCard[data-unit="13"] > button',b=>b.click());
+  await page.waitForFunction(()=>document.querySelector(".unit-intro__number")?.textContent?.includes("ÜNİTE 13"),
+    {timeout:14000});
+  await page.waitForSelector("#aydaA1DetailTop");
+  assert.ok(await page.$eval("#aydaA1DetailTop",n=>getComputedStyle(n).display!=="none"),
+    "Unit screen must have a B1-style dark back/progress header.");
+  await page.$eval("#aydaA1DetailTop .ayda-b1-detailBack",b=>b.click());
+  await page.waitForSelector(".module-list");
+  // Keep all A1-specific features via secondary navigation.
+  await page.$eval(".site-header .brand",b=>b.click());
+  await page.waitForSelector("#aydaA1B1Grid");
+  await page.$eval(".ayda-b1-other summary",b=>b.click());
+  await page.$eval(".ayda-b1-other-panel button:nth-child(1)",b=>b.click());
+  await page.waitForSelector(".exam-grid");
+  await page.$eval(".site-header .brand",b=>b.click());
+  await page.waitForSelector("#aydaA1B1Grid");
+  await page.$eval(".ayda-b1-other summary",b=>b.click());
+  await page.$eval(".ayda-b1-other-panel button:nth-child(2)",b=>b.click());
+  await page.waitForSelector(".support-card");
+  await page.$eval(".site-header .brand",b=>b.click());
+  await page.waitForSelector("#aydaA1B1Grid");
+  await page.$eval(".ayda-b1-main-nav > button:nth-child(2)",b=>b.click());
+  await page.waitForFunction(()=>document.activeElement===document.activeElement&&!!document.getElementById("kaynaklar"));
+  assert.ok(await page.$eval("#kaynaklar",el=>el.getBoundingClientRect().height>10),
+    "AYDA Kaynakları menu must retain the B1 homepage resource section.");
+  // Original A1 hero resume button and original quiz still work after new navigation.
   await page.$eval(".hero-card .primary-button",button=>button.click());
   await page.waitForSelector(".unit-intro");
   await page.waitForSelector("#aydaA1StudyNav",{timeout:7000}).catch(async error=>{

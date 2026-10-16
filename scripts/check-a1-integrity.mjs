@@ -16,7 +16,11 @@ assert.equal(sha(backup),"46ac0428d84a74b972777b3bd499589ba2e9460a",
 const root=read("index.html").toString("utf8");
 const previewHtml=read("preview/index.html").toString("utf8");
 const expectedLive=previewHtml.replace('    <meta name="robots" content="noindex,nofollow" />\n',"");
-assert.equal(root,expectedLive,"Live A1 must match the approved preview, except for noindex.");
+const approvedBeforeParity=expectedLive
+  .replace('    <link rel="stylesheet" href="./ayda-a1-b1-parity.css">\n',"")
+  .replace('    <script defer src="./ayda-a1-b1-parity.js"></script>\n',"");
+assert.ok(root===expectedLive||root===approvedBeforeParity,
+ "Production A1 is neither the approved current interface nor the last approved safe release.");
 assert.ok(!root.includes("noindex,nofollow"),"Production A1 must not have preview noindex.");
 for(const name of ["ayda-brand.js","ayda-a1-hybrid.js","ayda-a1-hybrid.css","ayda-a1-unified.js","ayda-a1-unified.css"]){
  assert.deepEqual(read(name),read("preview/"+name),"Live UI asset differs from approved preview: "+name);
@@ -51,6 +55,27 @@ const bundle=read("preview/assets/index-DRCE9iGL.js").toString("utf8");
 for(let i=1;i<=24;i++)assert.match(bundle,new RegExp("number:"+i+"(?:,|})"),"Unit "+i+" missing");
 assert.ok(bundle.includes("ayda-a1-progress-v3"),"Original progress key was removed");
 assert.ok(bundle.includes("Kısa konu tekrarı")&&bundle.includes("Konuşma kalıpları"),"Video mapping missing");
+const parityHtml=previewHtml.includes("ayda-a1-b1-parity.js");
+if(parityHtml){
+ assert.ok(previewHtml.includes("ayda-a1-b1-parity.css"),"Preview parity stylesheet is missing");
+ const overlay=read("preview/ayda-a1-b1-parity.js").toString("utf8");
+ const style=read("preview/ayda-a1-b1-parity.css").toString("utf8");
+ const match=overlay.match(/const UNITS=(\[[^\n]+\]);/);
+ assert.ok(match,"Extracted course catalog not found in B1-style A1 overlay");
+ const catalog=JSON.parse(match[1]);
+ assert.equal(catalog.length,24,"Missing A1 catalog units");
+ for(let i=1;i<=24;i++){
+  assert.equal(catalog[i-1].id,i,"A1 card ordering error");
+  assert.ok(bundle.includes("number:"+i+",title:`"+catalog[i-1].title+"`"),
+   "New A1 catalog does not reflect existing curriculum: "+i);
+ }
+ assert.ok(style.includes(".ayda-b1-main-nav")&&style.includes(".unitGrid"),
+  "B1-compatible navigation or card grid stylesheet missing");
+ if(root===expectedLive){
+  for(const name of ["ayda-a1-b1-parity.css","ayda-a1-b1-parity.js"])
+   assert.deepEqual(read(name),read("preview/"+name),"Published B1 parity resource differs from preview: "+name);
+ }
+}
 const enhanced=read("preview/ayda-a1-hybrid.js").toString("utf8");
 assert.ok(enhanced.includes("24 kısa soru"),"Four six-question practice flow missing");
 assert.ok(enhanced.includes("file/d/")&&enhanced.includes("/preview"),"In-page video support missing");
