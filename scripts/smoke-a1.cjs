@@ -42,7 +42,8 @@ async function main(){
   else req.abort();
  });
  try{
-  await page.goto("http://127.0.0.1:"+port+"/preview/",{waitUntil:"domcontentloaded"});
+  const locationPath=process.env.AYDA_TEST_PATH==="/"?"/":"/preview/";
+  await page.goto("http://127.0.0.1:"+port+locationPath,{waitUntil:"domcontentloaded"});
   await page.waitForSelector(".hero-card .primary-button",{timeout:15000});
   assert.ok(await page.$eval("#aydaLoginBox .ayda-login-logo",
      node=>getComputedStyle(node).backgroundImage.includes("data:image/png")),

@@ -10,9 +10,17 @@ function identical(original,preview,expected,label){
  assert.equal(sha(b),expected,label+" preview checksum changed");
  assert.deepEqual(b,a,label+" differs between original and preview");
 }
-const root=read("index.html");
-assert.equal(sha(root),"46ac0428d84a74b972777b3bd499589ba2e9460a",
- "Live A1 root page must not be modified");
+const backup=read("backups/a1-index-before-unified-20261016.html");
+assert.equal(sha(backup),"46ac0428d84a74b972777b3bd499589ba2e9460a",
+ "Original A1 homepage backup must be preserved byte-for-byte.");
+const root=read("index.html").toString("utf8");
+const previewHtml=read("preview/index.html").toString("utf8");
+const expectedLive=previewHtml.replace('    <meta name="robots" content="noindex,nofollow" />\n',"");
+assert.equal(root,expectedLive,"Live A1 must match the approved preview, except for noindex.");
+assert.ok(!root.includes("noindex,nofollow"),"Production A1 must not have preview noindex.");
+for(const name of ["ayda-brand.js","ayda-a1-hybrid.js","ayda-a1-hybrid.css","ayda-a1-unified.js","ayda-a1-unified.css"]){
+ assert.deepEqual(read(name),read("preview/"+name),"Live UI asset differs from approved preview: "+name);
+}
 identical("assets/index-DRCE9iGL.js","preview/assets/index-DRCE9iGL.js",
  "63f90f55f7de004da8fe78e30ea4fa0230064d0f","A1 course React bundle (24 units, 576 questions, videos and progress)");
 identical("assets/index-OVjCbFV6.css","preview/assets/index-OVjCbFV6.css",
@@ -47,4 +55,4 @@ const enhanced=read("preview/ayda-a1-hybrid.js").toString("utf8");
 assert.ok(enhanced.includes("24 kısa soru"),"Four six-question practice flow missing");
 assert.ok(enhanced.includes("file/d/")&&enhanced.includes("/preview"),"In-page video support missing");
 console.log("PASS: All original A1 materials unchanged: 24 units, 576 exercises, three video links per unit.");
-console.log("PASS: Live A1 index, video player sources, password service and progress data retained.");
+console.log("PASS: Live A1 matches tested preview; old root backed up; video sources, password and progress retained.");

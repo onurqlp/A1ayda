@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - 'preview/**'
+      - 'index.html'
+      - 'ayda-a1-*.js'
+      - 'ayda-a1-*.css'
+      - 'ayda-brand.js'
+      - 'backups/a1-index-before-unified-20261016.html'
       - 'scripts/check-a1-integrity.mjs'
       - 'scripts/smoke-a1.cjs'
       - '.github/workflows/ayda-a1-preview-tests.yml'
@@ -23,7 +28,11 @@ jobs:
         run: node scripts/check-a1-integrity.mjs
       - name: Install browser test driver
         run: npm install --no-save --no-package-lock puppeteer-core@24
-      - name: Test 24 lessons, videos, navigation and mobile
+      - name: Test approved A1 preview — 24 lessons, videos and mobile
+        run: node scripts/smoke-a1.cjs
+      - name: Test A1 production root — same course and interactions
+        env:
+          AYDA_TEST_PATH: '/'
         run: node scripts/smoke-a1.cjs
       - name: Preserve mobile screenshot
         if: always()

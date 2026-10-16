@@ -1,0 +1,676 @@
+/*
+ * AYDA Dil Akademisi · A1 Unified Theme
+ * Visually aligns A1 with the B1 mobile learning platform.
+ * This is a purely additive presentation layer for /preview/.
+ * All curriculum material, old videos, password logic and student progress remain intact.
+ */
+:root{
+  --ayda-deep:#0b1b31;
+  --ayda-navy:#102541;
+  --ayda-navy-deep:#0b1b31;
+  --ayda-blue:#214d75;
+  --ayda-blue-soft:#edf5fb;
+  --ayda-gold:#e8c37b;
+  --ayda-gold-soft:#fdf5e4;
+  --ayda-bg:#fbf9f5;
+  --ayda-surface:#ffffff;
+  --ayda-text:#142b44;
+  --ayda-muted:#536779;
+  --ayda-line:#dbe3ea;
+  --success:#19776b;
+  --success-bg:#eaf5f1;
+  --danger:#a6504b;
+  --danger-bg:#fff1ee;
+  --shadow:0 8px 28px #0b1b3110;
+  --content:1120px;
+  color-scheme:light;
+}
+html{scroll-padding-top:90px}
+body{
+  background:var(--ayda-bg);
+  color:var(--ayda-text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.6;
+  min-width:0;
+}
+#aydaProtectedContent *,#aydaLoginBox *{min-width:0}
+#aydaProtectedContent img,#aydaProtectedContent iframe{max-width:100%}
+button{touch-action:manipulation}
+:focus-visible{outline-color:var(--ayda-gold)!important;outline-offset:3px}
+
+/* Shared B1-style institute masthead */
+.site-header,.site-header--compact{
+  min-height:71px;
+  padding:10px max(19px,calc((100vw - 1120px)/2));
+  background:var(--ayda-deep);
+  color:white;
+  border-bottom:1px solid #ffffff1e;
+  box-shadow:0 6px 24px #0b1b3115;
+  position:sticky;
+  top:0;
+  z-index:42;
+}
+.site-header--compact{min-height:66px}
+.brand{
+  align-content:center;
+  min-height:47px;
+  width:154px;
+  max-width:50vw;
+  overflow:hidden;
+}
+.brand__name{font-size:24px;font-weight:900;letter-spacing:.16em;color:var(--ayda-gold)}
+.brand__line{background:var(--ayda-gold)}
+.brand__sub{color:#dde8f1;opacity:1;letter-spacing:.12em}
+body.ayda-a1-logo-ready .site-header .brand{
+  display:block;
+  background-repeat:no-repeat;
+  background-position:left center;
+  background-size:contain;
+  width:144px;
+  height:48px;
+}
+body.ayda-a1-logo-ready .site-header .brand>*{visibility:hidden}
+.header-level{
+  border:1px solid #3e566c;
+  border-radius:999px;
+  color:#f4e5c2;
+  font-size:12px;
+  letter-spacing:.02em;
+  background:#193552;
+  padding:8px 12px;
+}
+.site-header--compact::after{
+  content:"A1 · Başlangıç";
+  border:1px solid #3e566c;
+  background:#193552;
+  color:#f6e3ba;
+  padding:7px 11px;
+  border-radius:100px;
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.02em;
+}
+
+/* Password is still validated only by the existing AYDA access-control.js. */
+#aydaLoginBox{
+  background:radial-gradient(circle at 12% 10%,#e6ecf5 0%,transparent 39%),linear-gradient(175deg,#fbf9f5,#f0f3f7);
+}
+#aydaLoginBox .ayda-login-card{
+  border:1px solid var(--ayda-line);
+  border-top:5px solid var(--ayda-gold);
+  box-shadow:0 18px 48px #10254125;
+  border-radius:21px;
+}
+#aydaLoginBox .ayda-login-logo{
+  background-color:var(--ayda-navy);
+  color:white;
+  border-radius:12px;
+}
+body.ayda-a1-logo-ready #aydaLoginBox .ayda-login-logo{
+  display:block;
+  width:167px;
+  height:64px;
+  font-size:0;
+  background-color:var(--ayda-navy);
+  background-size:calc(100% - 17px) auto;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+#aydaLoginBox h1{color:var(--ayda-navy);font-weight:850}
+#aydaPasswordInput{
+  border-radius:11px;
+  border-color:var(--ayda-line);
+}
+#aydaPasswordInput:focus{border-color:var(--ayda-blue);box-shadow:0 0 0 3px #214d751e}
+#aydaLoginBox .ayda-login-btn{
+  background:var(--ayda-navy);
+  border-radius:11px;
+}
+#aydaLoginBox .ayda-login-btn:hover{background:#1a3b5b}
+
+/* Welcome: shorter, more task-focused hero, like B1. */
+.home-shell,.content-shell{width:min(var(--content),calc(100% - 36px))}
+.hero-card{
+  background:linear-gradient(110deg,#0b1b31 0%,#173755 100%);
+  width:100%;
+  min-height:0;
+  margin-top:19px;
+  padding:34px 36px 26px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 35px #0b1b3120;
+}
+.hero-card:after{
+  font-size:175px;
+  bottom:-45px;
+  color:#ffffff08;
+}
+.hero-card .eyebrow{
+  color:var(--ayda-gold);
+  font-size:11px;
+  letter-spacing:.12em;
+  margin-bottom:9px;
+}
+.hero-card h1{
+  font-size:clamp(30px,3.5vw,43px);
+  letter-spacing:-.035em;
+  line-height:1.12;
+  font-weight:850;
+}
+.hero-card__lead{
+  color:#d6e2ed;
+  font-size:15px;
+  max-width:58ch;
+  line-height:1.65;
+  margin:13px 0 15px;
+}
+.primary-button,.secondary-button,.danger-button{
+  border-radius:11px;
+  transition:background-color .16s,border-color .16s,box-shadow .16s;
+}
+.primary-button:hover,.secondary-button:hover{
+  transform:none;
+  box-shadow:0 6px 18px #10254118;
+}
+.primary-button{
+  background:var(--ayda-navy);
+  min-height:48px;
+  font-weight:800;
+}
+.primary-button--gold{
+  background:var(--ayda-gold);
+  color:#172e43;
+  border-radius:11px;
+  min-height:47px;
+  min-width:0;
+  padding:11px 17px;
+}
+.primary-button--gold:hover{background:#efd49b}
+.hero-card__metric{
+  color:#d8e4ed;
+  max-width:640px;
+  margin:15px 0 7px;
+  font-size:12px;
+}
+.hero-card .progress-wrap{max-width:640px}
+.hero-card .progress-track{height:6px;border-radius:40px;background:#ffffff25}
+.hero-card .progress-track span{background:var(--ayda-gold)}
+.ayda-a1-journey{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  max-width:760px;
+  margin:0 0 15px;
+}
+.ayda-a1-journey-label{
+  color:#e8c37b;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.06em;
+  margin-right:4px;
+}
+.ayda-a1-journey-step{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid #ffffff2a;
+  border-radius:50px;
+  background:#ffffff13;
+  color:#e6eef5;
+  padding:4px 10px;
+  font-size:11px;
+  font-weight:750;
+}
+
+/* Same home navigation hierarchy as B1, original A1 menu links retained. */
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:11px;
+  margin-top:14px;
+}
+.quick-card{
+  border:1px solid var(--ayda-line);
+  border-radius:15px;
+  background:white;
+  min-height:92px;
+  box-shadow:0 5px 18px #0b1b3107;
+  padding:17px 18px;
+}
+.quick-card:hover{
+  border-color:#acc1d1;
+  box-shadow:0 10px 30px #0b1b3110;
+}
+.quick-card--wide{
+  grid-area:auto;
+  grid-column:1/-1;
+  min-height:104px;
+  border:1px solid #244561;
+  border-left:5px solid var(--ayda-gold);
+  background:linear-gradient(115deg,var(--ayda-navy),#214d75);
+  box-shadow:0 9px 25px #0b1b3120;
+}
+.quick-card--wide strong{font-size:19px}
+.quick-card strong{color:var(--ayda-navy);font-size:16px}
+.quick-card--wide strong{color:white}
+.quick-card small{color:var(--ayda-muted);font-size:12px;line-height:1.5}
+.quick-card--wide small{color:#dae6ef}
+.quick-card__index{color:#a07833}
+.quick-card--wide .quick-card__index{color:var(--ayda-gold)}
+.quick-card>span:last-child{color:var(--ayda-blue)}
+.quick-card--wide>span:last-child{color:var(--ayda-gold)}
+.home-note{
+  border-left:4px solid var(--ayda-blue);
+  background:#eef3f7;
+  border-radius:13px;
+  margin:14px 0;
+  padding:18px;
+}
+.home-note__mark{border-radius:10px;background:var(--ayda-blue)}
+.home-note p{font-size:13px}
+
+/* B1-like catalog: an explicit 8-module / 24-unit learning pathway. */
+.content-shell{padding-top:24px}
+.page-heading{margin-bottom:20px}
+.page-heading .eyebrow{color:#9a7334;margin-bottom:7px;font-size:11px}
+.page-heading h1{font-size:clamp(27px,3.3vw,38px);line-height:1.15}
+.page-heading p:last-child{font-size:14px;line-height:1.6}
+.module-list{gap:10px}
+.module{
+  border:1px solid var(--ayda-line);
+  background:white;
+  border-radius:16px;
+  box-shadow:0 5px 22px #0b1b3108;
+  overflow:hidden;
+}
+.module__header{
+  min-height:72px;
+  padding:12px 16px;
+  grid-template-columns:42px 1fr 34px;
+  border:0;
+}
+.module__header:hover{background:#f8fafc}
+.module__number{
+  color:#ad833e;
+  font-size:13px;
+  letter-spacing:.08em;
+}
+.module__header strong{font-size:16px}
+.module__header small{font-size:12px}
+.module__toggle{
+  background:#edf4f9;
+  color:var(--ayda-blue);
+  border-radius:9px;
+}
+.module__content{
+  background:#f3f6f8;
+  gap:11px;
+  padding:13px;
+}
+.unit-card{
+  border:1px solid var(--ayda-line);
+  border-left:3px solid var(--ayda-gold);
+  border-radius:13px;
+  box-shadow:0 4px 16px #0b1b3108;
+  padding:17px;
+}
+.unit-card:hover{border-color:#bacbd7}
+.unit-card__top{
+  color:var(--ayda-blue);
+  letter-spacing:.06em;
+}
+.unit-card h2{
+  font-size:18px;
+  line-height:1.32;
+  color:var(--ayda-navy);
+  margin:9px 0 6px;
+}
+.unit-card p{font-size:13px;line-height:1.55;margin-bottom:10px}
+.tag-row{margin-bottom:10px;gap:5px}
+.tag-row span{
+  background:#edf5fb;
+  color:#355875;
+  font-size:11px;
+  border-radius:7px;
+  padding:5px 8px;
+}
+.ayda-a1-card-flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px;
+  margin:4px 0 12px;
+}
+.ayda-a1-card-flow span{
+  font-size:10px;
+  background:#f1f4f8;
+  color:#47637b;
+  border-radius:6px;
+  padding:5px 6px;
+  font-weight:800;
+}
+.ayda-a1-card-flow span:last-child{
+  background:#faf1db;
+  color:#775a27;
+}
+.ayda-a1-card-flow span+span:before{
+  content:"→";
+  color:#9aacbb;
+  margin-right:6px;
+}
+.unit-card .progress-track{height:6px;border-radius:90px;background:#e8eef3}
+.unit-card .progress-track span{background:var(--success)}
+.secondary-button{
+  background:#f0f5f9;
+  color:var(--ayda-navy);
+  border:1px solid #cbdbe6;
+  min-height:45px;
+}
+.secondary-button:hover{background:#e6f0f6}
+
+/* Harmonized resource cards, supplementary help and tests. */
+.resource-list{gap:9px}
+.resource-list details,.exam-card,.support-card,.how-card,.reset-panel{
+  border:1px solid var(--ayda-line);
+  border-radius:13px;
+  box-shadow:0 4px 17px #0b1b3107;
+}
+.resource-list summary{
+  border-radius:13px;
+  min-height:60px;
+}
+.resource-list summary strong{color:var(--ayda-navy)}
+.resource-list summary b{color:var(--ayda-blue)}
+.resource-panel a{font-size:14px}
+.info-note,.exam-disclaimer{
+  background:#fdf6e7;
+  border-radius:8px;
+  border-left-color:var(--ayda-gold);
+}
+.exam-card>div:first-child{color:#a17c3b}
+.exam-card h2{color:var(--ayda-navy)}
+.support-card__badge{border-radius:12px;background:var(--success)}
+
+/* Consistent academy lesson shell and explanation cards. */
+.lesson-shell,.exercise-shell{width:min(900px,calc(100% - 30px));padding-top:15px}
+.back-button{
+  color:var(--ayda-blue);
+  min-height:42px;
+  font-size:13px;
+  text-decoration:none;
+}
+.back-button:hover{text-decoration:underline}
+body[data-ayda-a1-view="intro"] .unit-intro{
+  border-top:4px solid var(--ayda-gold);
+  border-radius:17px;
+  padding:clamp(17px,3vw,27px);
+  box-shadow:0 8px 27px #0b1b3110;
+}
+body[data-ayda-a1-view="intro"] .unit-intro h1{font-size:clamp(25px,3.4vw,35px)}
+body[data-ayda-a1-view="intro"] .unit-intro__number{color:#9f7838}
+body[data-ayda-a1-view="intro"] .unit-intro__lead{font-size:14px;color:var(--ayda-muted)}
+body[data-ayda-a1-view="intro"] .logic-explainer{
+  border-left:4px solid var(--ayda-blue);
+  background:#edf5fb;
+  border-radius:12px;
+  padding:18px;
+}
+.logic-explainer h2{font-size:clamp(19px,2.7vw,24px)}
+.logic-explainer>p,.logic-explainer li{font-size:14px;line-height:1.7}
+.logic-grid{gap:9px}
+.logic-card{border-radius:11px;padding:15px;background:#fbfcfe}
+.logic-card--blue{border-left-color:var(--ayda-blue)}
+.logic-card--red{border-left-color:#c07165}
+.logic-card--gold{border-left-color:var(--ayda-gold)}
+.workbook-note{
+  background:#eaf5f1;
+  border-left-color:var(--success);
+  border-radius:10px;
+  font-size:13px;
+}
+.workbook-note span{background:var(--success);border-radius:5px}
+.ayda-a1-teacher-note{
+  border-color:#d8e5ed;
+  background:#f2f7fa;
+  padding:17px;
+}
+.ayda-a1-teacher-note>strong{color:var(--ayda-blue)}
+.ayda-a1-teacher-example{border-left-color:var(--ayda-gold)}
+#aydaA1StudyNav{
+  background:#fff;
+  border-color:var(--ayda-line);
+  box-shadow:0 4px 16px #0b1b3107;
+  border-radius:13px;
+}
+.ayda-a1-nav__heading strong{color:var(--ayda-navy)}
+.ayda-a1-nav__heading span{color:var(--ayda-muted)}
+.ayda-a1-study-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  font-size:11px;
+  color:var(--ayda-muted);
+  margin:0 0 9px;
+}
+.ayda-a1-study-meta strong{font-size:11px;color:#815f27}
+#aydaA1StudyNav .ayda-a1-nav-tab{background:#f1f5f8;color:#28455e;border-color:#dfe7ef;border-radius:9px}
+#aydaA1StudyNav .ayda-a1-nav-tab.active{background:var(--ayda-navy);color:white;border-color:var(--ayda-navy)}
+.ayda-a1-action--primary{background:var(--ayda-navy);border-color:var(--ayda-navy)}
+.ayda-a1-action--primary:hover{background:var(--ayda-blue)}
+.ayda-a1-player{border-radius:13px;background:#fff}
+.ayda-a1-player__frame{border-radius:11px}
+.video-resources__grid a{border-radius:9px}
+body[data-ayda-a1-view="intro"] .video-resources{background:#eff4f7;border-color:#dce5eb}
+body[data-ayda-a1-view="intro"] .video-resources__grid a.ayda-a1-video-active{
+  background:#fdf7e9;
+  border-color:#d1b375;
+}
+.ayda-a1-practice-info{background:#eaf5f1;color:#2d5549}
+.ayda-a1-inline-footer{border-top-color:#dfe7eb}
+
+/* Single-screen question flow, minimal wasted vertical space. */
+body[data-ayda-a1-view="exercise"] .exercise-card{
+  border-top:4px solid var(--ayda-gold);
+  border-radius:14px;
+  box-shadow:0 7px 26px #0b1b310e;
+  padding:clamp(16px,3vw,25px);
+}
+body[data-ayda-a1-view="exercise"] .exercise-card h1{font-size:clamp(19px,3vw,27px)}
+#aydaA1SetBar{background:white;border-color:var(--ayda-line);border-radius:12px}
+.ayda-a1-setbar__summary strong{color:var(--ayda-navy)}
+.ayda-a1-setbar__progress span.active{background:var(--ayda-gold)}
+.ayda-a1-setbar__progress span.done{background:var(--success)}
+.exercise-topic-help{
+  border-radius:11px;
+  background:#f3f8fc;
+  border-color:#d5e2eb;
+  overflow:hidden;
+}
+.option-list{gap:9px}
+.option-list button{
+  border:1px solid #d4e0e9;
+  background:#fff;
+  border-radius:10px;
+  min-height:53px;
+}
+.option-list button>span{border-radius:7px}
+.option-list button.is-selected{
+  border-color:var(--ayda-blue);
+  background:#edf5fb;
+}
+.input-label input,.input-label textarea,.matching-grid select{
+  border-radius:10px;
+  border-color:#c5d4e0;
+}
+.order-result{border-radius:10px;background:#edf5fb}
+.token-grid button{border-radius:9px}
+.feedback{border-radius:10px}
+.answer-explanation{border-radius:8px;overflow:hidden}
+body[data-ayda-a1-view="exercise"] .exercise-action{
+  position:static;
+  padding:14px 0 3px;
+  background:none;
+}
+body[data-ayda-a1-view="exercise"] .exercise-action .primary-button{
+  background:var(--ayda-navy);
+  color:white;
+  border-radius:10px;
+  min-height:51px;
+}
+.ayda-a1-set-break{
+  margin:12px 0 4px;
+  border:1px solid #cbe4da;
+  border-left:4px solid var(--success);
+  border-radius:10px;
+  padding:12px 15px;
+  color:#245d4c;
+  background:#eaf5f1;
+}
+.ayda-a1-set-break strong{font-size:14px}
+.ayda-a1-set-break p{font-size:12px;line-height:1.5;margin:5px 0 0}
+.summary-card{
+  border:1px solid var(--ayda-line);
+  border-top:4px solid var(--ayda-gold);
+  border-radius:16px;
+  margin-top:13px;
+  box-shadow:0 10px 35px #0b1b3110;
+}
+.summary-card h1{font-size:clamp(26px,4vw,40px)}
+.score-grid{border-radius:11px;overflow:hidden}
+
+/* Two visually related nav surfaces: original A1 dashboard and B1-style lesson nav. */
+.bottom-nav{
+  min-height:68px;
+  background:#ffffffef;
+  border:1px solid var(--ayda-line);
+  border-radius:15px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 7px 30px #0b1b311f;
+  width:min(640px,calc(100vw - 32px));
+  bottom:13px;
+  left:50%;
+  right:auto;
+  transform:translateX(-50%);
+  overflow:hidden;
+}
+.bottom-nav button{min-height:65px;padding:7px 5px;font-size:11px;color:var(--ayda-muted)}
+.bottom-nav button.is-active{color:var(--ayda-navy);box-shadow:inset 0 3px var(--ayda-gold);background:#f8fafb}
+.bottom-nav__icon{font-size:19px}
+#aydaA1QuickDock{
+  width:min(640px,calc(100vw - 32px));
+  border-radius:15px;
+  padding:7px;
+  box-shadow:0 8px 30px #0b1b3129;
+}
+#aydaA1QuickDock button{border-radius:9px;background:#eef3f6;color:#28475f}
+#aydaA1QuickDock button.active{background:var(--ayda-navy);color:white}
+#aydaA1QuickDock button:focus-visible{outline-color:var(--ayda-gold)}
+.page-with-nav{padding-bottom:115px}
+
+/* Mobile first, with no horizontal scrolling and at least 44 px targets. */
+@media(max-width:900px){
+ .site-header,.site-header--compact{padding:9px 17px}
+}
+@media(min-width:700px) and (max-width:1049px){
+ .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .quick-card--wide{grid-column:1/-1}
+ .quick-grid>.quick-card:last-child{grid-column:1/-1}
+}
+@media(max-width:699px){
+ html{scroll-padding-top:75px}
+ .site-header,.site-header--compact{min-height:64px;padding:8px 13px}
+ .site-header--compact::after{font-size:11px;padding:6px 9px}
+ body.ayda-a1-logo-ready .site-header .brand{width:127px;height:40px}
+ .header-level{font-size:10px;padding:6px 8px}
+ .home-shell,.content-shell{width:calc(100% - 24px)}
+ .hero-card{
+  margin-top:10px;
+  border-radius:16px;
+  padding:21px 18px 19px;
+  min-height:0;
+ }
+ .hero-card:after{font-size:136px;bottom:-30px}
+ .hero-card .eyebrow{margin-bottom:8px;font-size:10px}
+ .hero-card h1{font-size:clamp(30px,8vw,36px);line-height:1.12}
+ .hero-card__lead{font-size:13px;margin:9px 0 13px;line-height:1.55}
+ .hero-card .primary-button--gold{min-height:48px;font-size:14px}
+ .hero-card__metric{font-size:11px;margin:13px 0 7px}
+ .ayda-a1-journey{gap:5px;margin-bottom:14px}
+ .ayda-a1-journey-label{width:100%;font-size:9px}
+ .ayda-a1-journey-step{font-size:10px;padding:4px 7px}
+ .quick-grid{grid-template-columns:1fr;gap:9px;margin-top:10px}
+ .quick-card,.quick-card--wide{grid-column:auto!important;min-height:76px;border-radius:12px;padding:13px 14px}
+ .quick-card--wide{min-height:87px}
+ .quick-card strong,.quick-card--wide strong{font-size:15px}
+ .quick-card small{font-size:12px}
+ .home-note{padding:14px;gap:11px}
+ .home-note__mark{width:38px;height:38px}
+ .content-shell{padding-top:20px}
+ .page-heading{margin-bottom:16px}
+ .page-heading h1{font-size:29px}
+ .page-heading p:last-child{font-size:13px}
+ .module__header{grid-template-columns:32px 1fr 32px;min-height:65px;padding:10px 12px;gap:8px}
+ .module__header strong{font-size:15px}
+ .module__header small{font-size:11px}
+ .module__toggle{width:30px;height:30px;font-size:20px}
+ .module__content{padding:10px}
+ .unit-card{padding:14px}
+ .unit-card h2{font-size:17px;margin:8px 0 5px}
+ .unit-card p{font-size:12px}
+ .tag-row span{font-size:10px}
+ .ayda-a1-card-flow{gap:3px}
+ .ayda-a1-card-flow span{font-size:10px;padding:4px 6px}
+ .lesson-shell,.exercise-shell{width:calc(100% - 22px);padding-top:10px}
+ body[data-ayda-a1-view="intro"] .unit-intro{padding:15px 13px}
+ body[data-ayda-a1-view="intro"] .unit-intro h1{font-size:25px}
+ body[data-ayda-a1-view="intro"] .unit-intro__lead{font-size:13px}
+ .logic-explainer{padding:15px}
+ .logic-explainer h2{font-size:20px}
+ .logic-explainer>p,.logic-explainer li{font-size:13px}
+ #aydaA1StudyNav{padding:11px}
+ .ayda-a1-study-meta{display:grid;gap:3px;font-size:10px}
+ .ayda-a1-study-meta strong{font-size:10px}
+ #aydaA1StudyNav .ayda-a1-nav-tab{min-height:45px;font-size:11px}
+ .ayda-a1-nav__next{gap:6px}
+ .ayda-a1-nav__next span{font-size:10px}
+ .ayda-a1-nav__next .ayda-a1-action{padding:8px 10px;font-size:11px}
+ .ayda-a1-player{padding:8px}
+ .ayda-a1-inline-footer{gap:6px}
+ .ayda-a1-inline-footer .ayda-a1-action{font-size:11px}
+ #aydaA1SetBar{padding:11px}
+ .ayda-a1-setbar__summary strong{font-size:12px}
+ .ayda-a1-setbar__actions .ayda-a1-action{min-height:43px;font-size:11px}
+ .bottom-nav,#aydaA1QuickDock{
+  width:100%;
+  max-width:none;
+  left:0;
+  right:0;
+  bottom:0;
+  transform:none;
+  border-radius:15px 15px 0 0;
+  border-left:0;
+  border-right:0;
+  border-bottom:0;
+  padding-bottom:env(safe-area-inset-bottom);
+ }
+ #aydaA1QuickDock{padding:7px 9px calc(7px + env(safe-area-inset-bottom))}
+ #aydaA1QuickDock button{min-height:45px}
+ .bottom-nav button{min-height:60px}
+ .page-with-nav{padding-bottom:101px}
+ body[data-ayda-a1-view="intro"] .lesson-shell,
+ body[data-ayda-a1-view="exercise"] .exercise-shell{
+  padding-bottom:calc(110px + env(safe-area-inset-bottom));
+ }
+}
+@media(max-width:360px){
+ .hero-card h1{font-size:28px}
+ .site-header--compact::after{font-size:10px}
+ .ayda-a1-journey-step{font-size:9px}
+ .ayda-a1-study-meta strong{font-size:10px}
+ .ayda-a1-nav__next .ayda-a1-action{max-width:55%}
+ .ayda-a1-card-flow span{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
