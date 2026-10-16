@@ -106,7 +106,19 @@ async function main(){
   await page.waitForSelector("#aydaA1B1Grid");
   await page.$eval(".ayda-b1-other summary",b=>b.click());
   await page.$eval(".ayda-b1-other-panel button:nth-child(2)",b=>b.click());
-  await page.waitForSelector(".support-card");
+  await page.waitForSelector(".support-card",{timeout:6000}).catch(async error=>{
+    console.error("HELP NAV DEBUG",await page.evaluate(()=>({
+      currentMain:document.querySelector("main")?.className,
+      pageHeading:document.querySelector(".page-heading h1")?.textContent,
+      bottomButtons:[...document.querySelectorAll(".bottom-nav button")].map(n=>n.textContent),
+      nav:[...document.querySelectorAll(".ayda-b1-main-nav button")].map(n=>n.textContent),
+      view:document.body.dataset.aydaA1B1View,
+      otherOpen:document.querySelector(".ayda-b1-other")?.open,
+      examGrid:!!document.querySelector(".exam-grid"),
+      support:!!document.querySelector(".support-card")
+    })),errors);
+    throw error;
+  });
   await page.$eval(".site-header .brand",b=>b.click());
   await page.waitForSelector("#aydaA1B1Grid");
   await page.$eval(".ayda-b1-main-nav > button:nth-child(2)",b=>b.click());
