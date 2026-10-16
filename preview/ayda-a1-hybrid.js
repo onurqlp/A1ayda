@@ -312,7 +312,7 @@ function renderDock(view){
  dock.hidden=!enabled;
  if(!enabled)return;
  const selected=view==="exercise"?"practice":state.tab;
- $("[data-a1-dock-tab]",dock).forEach(button=>{
+ $$("[data-a1-dock-tab]",dock).forEach(button=>{
   const active=button.dataset.a1DockTab===selected;
   if(button.classList.contains("active")!==active)button.classList.toggle("active",active);
   if(button.getAttribute("aria-pressed")!==String(active))button.setAttribute("aria-pressed",String(active));
