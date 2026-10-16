@@ -17,7 +17,7 @@ const server=http.createServer((request,response)=>{
  try{
   const name=new URL(request.url,"http://localhost").pathname;
   const file=path.resolve(root,"."+decodeURIComponent(name));
-  if(!file.startsWith(root+path.sep))throw Error("Forbidden path");
+  if(!(file===root||file.startsWith(root+path.sep)))throw Error("Forbidden path");
   const target=fs.statSync(file).isDirectory()?path.join(file,"index.html"):file;
   response.writeHead(200,{"content-type":mime[path.extname(target)]||"application/octet-stream"});
   response.end(fs.readFileSync(target));
