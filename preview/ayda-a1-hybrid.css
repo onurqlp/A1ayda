@@ -1,0 +1,161 @@
+/* AYDA A1 / Hibrit öğrenme – mevcut içeriği değiştirmeyen eklenti
+   Orijinal ders metinleri, videolar ve sorular CSS ile sadece bölümlere ayrılır.
+ */
+:root{--a1-navy:#102541;--a1-gold:#e8c37b;--a1-cream:#fbf9f5;--a1-line:#d9e3eb;--a1-green:#187962}
+body{background:var(--a1-cream)}
+body[data-ayda-a1-view="intro"] .lesson-shell,
+body[data-ayda-a1-view="exercise"] .exercise-shell{padding-bottom:max(112px,calc(90px + env(safe-area-inset-bottom)))}
+body[data-ayda-a1-view="intro"] .unit-intro{
+  border-top:4px solid var(--a1-gold);
+  border-radius:16px;
+  margin-top:10px;
+  padding:clamp(16px,3vw,28px);
+  box-shadow:0 10px 34px #12285012;
+}
+body[data-ayda-a1-view="intro"] .unit-intro h1{font-size:clamp(27px,5vw,39px);line-height:1.18;margin-top:8px}
+body[data-ayda-a1-view="intro"] .unit-intro__lead{font-size:15px;margin-bottom:14px;line-height:1.5}
+body[data-ayda-a1-view="intro"] .logic-explainer{border-radius:12px;padding:18px}
+body[data-ayda-a1-view="intro"] .logic-grid{gap:10px}
+body[data-ayda-a1-view="intro"] .logic-grid article{border-radius:10px}
+body[data-ayda-a1-view="intro"] .video-resources{border-radius:13px;background:#f8fafc;border-color:#e0e7ef;margin:10px 0}
+body[data-ayda-a1-view="intro"] .video-resources__grid{grid-template-columns:1fr;gap:6px}
+body[data-ayda-a1-view="intro"] .video-resources__grid a{min-height:58px;border-radius:10px;text-decoration:none;cursor:pointer}
+body[data-ayda-a1-view="intro"] .video-resources__grid a.ayda-a1-video-active{
+  border-color:#bda06a;background:#fff9eb;box-shadow:inset 3px 0 var(--a1-gold)
+}
+body[data-ayda-a1-view="intro"] .video-resources__grid a:focus-visible{outline:3px solid #b78622;outline-offset:2px}
+
+/* Three user-facing sections: no original content is removed from DOM. */
+body[data-ayda-a1-view="intro"] .logic-explainer,
+body[data-ayda-a1-view="intro"] .logic-grid,
+body[data-ayda-a1-view="intro"] #aydaA1TeacherNote,
+body[data-ayda-a1-view="intro"] .workbook-note,
+body[data-ayda-a1-view="intro"] .video-resources,
+body[data-ayda-a1-view="intro"] #aydaA1EndLearn,
+body[data-ayda-a1-view="intro"] #aydaA1EndVideo,
+body[data-ayda-a1-view="intro"] #aydaA1IntroHelp,
+body[data-ayda-a1-view="intro"] .unit-intro > button.primary-button{display:none!important}
+
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="learn"] .logic-explainer{display:block!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="learn"] .logic-grid{display:grid!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="learn"] #aydaA1TeacherNote{display:block!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="learn"] .workbook-note{display:flex!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="learn"] #aydaA1EndLearn{display:flex!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="video"] .video-resources{display:block!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="video"] #aydaA1EndVideo{display:flex!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="practice"] #aydaA1IntroHelp{display:block!important}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="practice"] .unit-intro > button.primary-button{display:inline-flex!important}
+#aydaA1StudyNav{margin:14px 0 18px;padding:14px;border:1px solid #dce4ec;border-radius:13px;background:#fff;box-shadow:0 4px 18px #1228500d}
+.ayda-a1-nav__heading{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px}
+.ayda-a1-nav__heading strong{font-size:14px;color:var(--a1-navy)}
+.ayda-a1-nav__heading span{font-size:12px;color:#64798c;text-align:right}
+.ayda-a1-nav__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+#aydaA1StudyNav .ayda-a1-nav-tab{
+  border:1px solid #d9e2eb;background:#f6f8fb;color:#25405c;
+  border-radius:10px;min-height:48px;padding:8px 6px;
+  font-size:13px;font-weight:800;line-height:1.25;cursor:pointer
+}
+#aydaA1StudyNav .ayda-a1-nav-tab.active{background:var(--a1-navy);border-color:var(--a1-navy);color:white}
+.ayda-a1-nav__next{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+.ayda-a1-nav__next span{font-size:12px;color:#64798c}
+.ayda-a1-action{
+  min-height:44px;min-width:0;
+  padding:9px 13px;border:1px solid #d8e2eb;border-radius:10px;
+  background:#f8fafc;color:#294660;font-size:13px;font-weight:800;
+  cursor:pointer;text-align:center
+}
+.ayda-a1-action--primary{background:var(--a1-navy);color:white;border-color:var(--a1-navy)}
+.ayda-a1-action:hover{filter:brightness(.96)}
+.ayda-a1-action:focus-visible,.ayda-a1-nav-tab:focus-visible{outline:3px solid #ba9245;outline-offset:2px}
+.ayda-a1-inline-footer{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin:16px 0;padding-top:14px;border-top:1px solid #e3e9ef}
+.ayda-a1-practice-info{
+  background:#eaf4ef;border-left:4px solid var(--a1-green);border-radius:9px;
+  padding:15px 16px;margin:14px 0;color:#2d5549;font-size:14px;line-height:1.65
+}
+body[data-ayda-a1-view="intro"][data-ayda-a1-tab="practice"] .unit-intro > button.primary-button{border-radius:11px}
+
+/* New material is additive; original grammar explanations remain above. */
+.ayda-a1-teacher-note{
+  background:#f1f5fa;border:1px solid #dbe5ef;border-radius:13px;
+  padding:18px 19px;margin:14px 0
+}
+.ayda-a1-teacher-note >strong{display:block;font-size:13px;color:#244766;margin-bottom:8px}
+.ayda-a1-teacher-note >p{font-size:14px;color:#38536a;margin:0 0 12px;line-height:1.7}
+.ayda-a1-teacher-example{display:grid;gap:4px;padding:13px 15px;border-radius:9px;border-left:3px solid var(--a1-gold);background:white}
+.ayda-a1-teacher-example b{font-size:16px;color:#132c45}
+.ayda-a1-teacher-example span{font-size:13px;color:#64798c}
+
+/* Three existing Drive recordings per unit can play inside the site. */
+.ayda-a1-player{
+  background:#fff;border:1px solid #e0e8f0;border-radius:12px;
+  padding:12px;margin-bottom:14px
+}
+.ayda-a1-player__top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.ayda-a1-player__top strong{font-size:14px;color:var(--a1-navy);overflow-wrap:anywhere}
+.ayda-a1-player__top span{font-size:11px;color:#52796a;white-space:nowrap;font-weight:800}
+.ayda-a1-player__frame{width:100%;aspect-ratio:16/9;background:#0b1b31;border-radius:10px;overflow:hidden}
+.ayda-a1-player__frame iframe{display:block;width:100%;height:100%;border:0}
+.ayda-a1-player__frame[hidden]{display:none}
+.ayda-a1-player__bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:9px}
+.ayda-a1-player__bottom p{font-size:11px;line-height:1.4;color:#6d7b8b;margin:0}
+.ayda-a1-player__bottom a{color:#244d75;font-size:12px;font-weight:800;white-space:nowrap}
+
+/* Exercise screen: one question at a time, visibly grouped into four sessions. */
+#aydaA1SetBar{background:#fff;border:1px solid #dee6ed;border-radius:13px;padding:12px 15px;margin:0 0 13px}
+.ayda-a1-setbar__top{display:flex;justify-content:space-between;gap:14px;align-items:center}
+.ayda-a1-setbar__summary{display:grid;gap:3px;min-width:0}
+.ayda-a1-setbar__summary strong{font-size:14px;color:var(--a1-navy)}
+.ayda-a1-setbar__summary span{font-size:12px;color:#5c7387}
+.ayda-a1-setbar__actions{display:flex;gap:6px;flex:0 0 auto}
+.ayda-a1-setbar__actions .ayda-a1-action{min-height:40px;padding:7px 10px;font-size:12px}
+.ayda-a1-setbar__progress{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 8px}
+.ayda-a1-setbar__progress span{height:6px;border-radius:99px;background:#e7edf3}
+.ayda-a1-setbar__progress span.done{background:var(--a1-green)}
+.ayda-a1-setbar__progress span.active{background:var(--a1-gold)}
+.ayda-a1-setbar__message{color:#65788b;margin:0;font-size:11px;line-height:1.4}
+body[data-ayda-a1-view="exercise"] .exercise-card{border-radius:13px;box-shadow:0 12px 35px #0b1b3115;padding:clamp(17px,4vw,25px)}
+body[data-ayda-a1-view="exercise"] .exercise-card h1{font-size:clamp(20px,4vw,28px)}
+body[data-ayda-a1-view="exercise"] .exercise-action .primary-button{border-radius:11px;min-height:52px}
+body[data-ayda-a1-view="exercise"] .option-list button{min-height:52px}
+
+/* The in-page controls are the primary pathway; the bottom dock is optional. */
+#aydaA1QuickDock[hidden]{display:none!important}
+#aydaA1QuickDock{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;
+  position:fixed;z-index:72;bottom:12px;left:50%;transform:translateX(-50%);
+  width:min(560px,calc(100vw - 26px));background:#fff;border:1px solid var(--a1-line);
+  border-radius:15px;padding:8px;box-shadow:0 8px 34px #0b1b312b
+}
+#aydaA1QuickDock button{
+  border:1px solid transparent;background:#f0f4f7;color:#2b4862;
+  border-radius:9px;min-height:47px;font-size:12px;font-weight:850;cursor:pointer
+}
+#aydaA1QuickDock button.active{color:#fff;background:var(--a1-navy)}
+#aydaA1QuickDock button:focus-visible{outline:3px solid #b8924c;outline-offset:2px}
+@media(max-width:620px){
+ body[data-ayda-a1-view="intro"] .lesson-shell,
+ body[data-ayda-a1-view="exercise"] .exercise-shell{width:calc(100% - 22px);padding-top:11px;padding-bottom:117px}
+ body[data-ayda-a1-view="intro"] .unit-intro{padding:15px 13px}
+ body[data-ayda-a1-view="intro"] .unit-intro h1{font-size:27px;line-height:1.2}
+ body[data-ayda-a1-view="intro"] .unit-intro__lead{font-size:14px}
+ .ayda-a1-nav__heading strong{font-size:12px}
+ .ayda-a1-nav__heading span{font-size:11px}
+ #aydaA1StudyNav{padding:11px;margin:10px 0 15px}
+ #aydaA1StudyNav .ayda-a1-nav-tab{font-size:11px;min-height:46px;padding:8px 3px}
+ .ayda-a1-nav__next span{font-size:11px}
+ .ayda-a1-nav__next .ayda-a1-action{font-size:12px;padding:7px 10px}
+ .ayda-a1-inline-footer{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+ .ayda-a1-inline-footer .ayda-a1-action{font-size:12px;padding:8px}
+ .ayda-a1-player{padding:8px}
+ .ayda-a1-player__top{align-items:flex-start;gap:7px}
+ .ayda-a1-player__top strong{font-size:12px}
+ .ayda-a1-player__top span{font-size:10px}
+ .ayda-a1-player__bottom{display:grid;gap:5px}
+ .ayda-a1-player__bottom a{font-size:12px}
+ #aydaA1SetBar{padding:10px}
+ .ayda-a1-setbar__summary strong{font-size:12px}
+ .ayda-a1-setbar__actions .ayda-a1-action{font-size:11px;min-height:42px;padding:5px 8px}
+ #aydaA1QuickDock{bottom:0;left:0;transform:none;width:100%;border-radius:14px 14px 0 0;border-left:0;border-right:0;border-bottom:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+ #aydaA1QuickDock button{min-height:48px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
