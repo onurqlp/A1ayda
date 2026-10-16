@@ -157,6 +157,7 @@ async function main(){
   });
   await page.$eval(".hero-card .primary-button",b=>b.click());
   await page.waitForSelector(".unit-intro");
+  await page.waitForSelector('#aydaA1StudyNav [data-a1-tab="practice"]',{timeout:10000});
   await page.$eval('[data-a1-tab="practice"]',b=>b.click());
   await page.$eval(".unit-intro > .primary-button",b=>b.click());
   await page.waitForSelector(".exercise-shell #aydaA1SetBar");
