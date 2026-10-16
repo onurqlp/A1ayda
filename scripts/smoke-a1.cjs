@@ -103,7 +103,8 @@ async function main(){
   await page.waitForSelector("#aydaA1SetBar");
   assert.match(await page.$eval("#aydaA1SetTitle",n=>n.textContent),/Set 1\/4/,
     "Original first exercise belongs to first six-question set");
-  assert.ok(await page.$eval(".exercise-card .exercise-action button",n=>!n.disabled),
+  await page.waitForSelector(".exercise-shell .exercise-action button",{timeout:9000});
+  assert.ok(await page.$eval(".exercise-shell .exercise-action button",n=>!n.disabled),
     "Original answer checking control must still exist");
   assert.ok(await page.$eval(".exercise-topic-help",n=>!!n),
     "In-exercise original lesson explanation must remain");
