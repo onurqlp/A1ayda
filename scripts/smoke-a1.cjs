@@ -54,7 +54,17 @@ async function main(){
   });
   await page.$eval(".hero-card .primary-button",button=>button.click());
   await page.waitForSelector(".unit-intro");
-  await page.waitForSelector("#aydaA1StudyNav");
+  await page.waitForSelector("#aydaA1StudyNav",{timeout:7000}).catch(async error=>{
+    console.error("INTRO DIAGNOSTIC",await page.evaluate(()=>({
+      protectedDisplay:getComputedStyle(document.getElementById("aydaProtectedContent")).display,
+      unitLabel:document.querySelector(".unit-intro__number")?.textContent,
+      bodyState:{...document.body.dataset},
+      quickDockPresent:!!document.getElementById("aydaA1QuickDock"),
+      introPresent:!!document.querySelector(".lesson-shell .unit-intro"),
+      firstIntro:document.querySelector(".unit-intro")?.innerHTML.slice(0,200)
+    })),errors);
+    throw error;
+  });
   assert.equal(await page.$$eval("#aydaA1StudyNav [data-a1-tab]",a=>a.length),3,
     "Three in-page study tabs are required.");
   assert.ok(await page.$eval(".logic-explainer",node=>getComputedStyle(node).display!=="none"),
