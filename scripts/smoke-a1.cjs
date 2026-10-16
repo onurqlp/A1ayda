@@ -44,9 +44,6 @@ async function main(){
  try{
   await page.goto("http://127.0.0.1:"+port+"/preview/",{waitUntil:"domcontentloaded"});
   await page.waitForSelector(".hero-card .primary-button",{timeout:15000});
-  await page.waitForSelector("#aydaA1Journey",{timeout:8000});
-  assert.equal(await page.$$eval("#aydaA1Journey .ayda-a1-journey-step",els=>els.length),3,
-    "A1 homepage must show the three-step learning pathway.");
   assert.ok(await page.$eval("#aydaLoginBox .ayda-login-logo",
      node=>getComputedStyle(node).backgroundImage.includes("data:image/png")),
     "Real AYDA logo should appear on protected entry card.");
@@ -63,6 +60,9 @@ async function main(){
    document.getElementById("aydaLoginBox").style.display="none";
    document.getElementById("aydaProtectedContent").style.display="block";
   });
+  await page.waitForSelector("#aydaA1Journey",{timeout:8000});
+  assert.equal(await page.$eval("#aydaA1Journey .ayda-a1-journey-step",els=>els.length),3,
+    "A1 homepage must show the three-step learning pathway.");
   await page.waitForFunction(()=>document.querySelector(".site-header .brand")?.classList.contains("ayda-logo-applied"));
   await fs.promises.mkdir(path.join(root,"screenshots"),{recursive:true});
   await page.screenshot({path:path.join(root,"screenshots","a1-home-mobile.png"),fullPage:false});
