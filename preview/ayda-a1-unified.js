@@ -129,8 +129,14 @@
   }
   function start(){
     const root=$("#root");
+    const accessArea=$("#aydaProtectedContent");
     attachRealBrand();
     if(root)new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
+    // Login is opened by the existing external AYDA password script.
+    // Its display change doesn't mutate #root, so track this transition too.
+    if(accessArea)new MutationObserver(schedule).observe(accessArea,{
+      attributes:true,attributeFilter:["style","class"]
+    });
     schedule();
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
