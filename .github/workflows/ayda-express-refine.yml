@@ -1,0 +1,34 @@
+name: AYDA A1 Express görünüm güncellemesi
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ayda-express-refine.yml'
+      - 'scripts/ayda_express_refine.py'
+      - 'express/ayda-2026-refine.css'
+      - 'express/ayda-2026-refine.js'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kaynakları al
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Mevcut soruları koruyarak görünümü bağla
+        run: python3 scripts/ayda_express_refine.py
+      - name: Değişiklik varsa GitHub Pages için yayınla
+        shell: bash
+        run: |
+          if git diff --quiet -- express/index.html; then
+            echo "Express dosyası güncel."
+            exit 0
+          fi
+          git config user.name "AYDA Content Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add express/index.html
+          git commit -m "Enable AYDA 2026 Express look without changing exercises"
+          git push
