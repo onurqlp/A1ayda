@@ -14,12 +14,16 @@ const backup=read("backups/a1-index-before-unified-20261016.html");
 assert.equal(sha(backup),"46ac0428d84a74b972777b3bd499589ba2e9460a",
  "Original A1 homepage backup must be preserved byte-for-byte.");
 const root=read("index.html").toString("utf8");
+// A1 Komple Alıştırmalar için izin verilen tek satırlık, içerik-dışı bağlantı.
+const expressShortcut='    <script defer src="./ayda-express-shortcut.js"></script>\n';
+assert.equal(root.split(expressShortcut).length,2,"Expected exactly one Express shortcut reference.");
+const approvedRoot=root.replace(expressShortcut,"");
 const previewHtml=read("preview/index.html").toString("utf8");
 const expectedLive=previewHtml.replace('    <meta name="robots" content="noindex,nofollow" />\n',"");
 const approvedBeforeParity=expectedLive
   .replace('    <link rel="stylesheet" href="./ayda-a1-b1-parity.css">\n',"")
   .replace('    <script defer src="./ayda-a1-b1-parity.js"></script>\n',"");
-assert.ok(root===expectedLive||root===approvedBeforeParity,
+assert.ok(approvedRoot===expectedLive||approvedRoot===approvedBeforeParity,
  "Production A1 is neither the approved current interface nor the last approved safe release.");
 assert.ok(!root.includes("noindex,nofollow"),"Production A1 must not have preview noindex.");
 for(const name of ["ayda-brand.js","ayda-a1-hybrid.js","ayda-a1-hybrid.css","ayda-a1-unified.js","ayda-a1-unified.css"]){
@@ -71,7 +75,7 @@ if(parityHtml){
  }
  assert.ok(style.includes(".ayda-b1-main-nav")&&style.includes(".unitGrid"),
   "B1-compatible navigation or card grid stylesheet missing");
- if(root===expectedLive){
+ if(approvedRoot===expectedLive){
   for(const name of ["ayda-a1-b1-parity.css","ayda-a1-b1-parity.js"])
    assert.deepEqual(read(name),read("preview/"+name),"Published B1 parity resource differs from preview: "+name);
  }
