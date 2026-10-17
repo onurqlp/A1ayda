@@ -1,0 +1,11 @@
+{
+  "name": "AYDA A1 EXPRESS — Etkileşimli Çalışma Kitabı",
+  "short_name": "A1 Express",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf9f5",
+  "theme_color": "#0b1b31",
+  "lang": "tr",
+  "description": "AYDA Dil Akademisi A1 tekrar kitabı: 359 özgün görev, çevrimdışı çalışma ve kısa açıklamalar."
+}
