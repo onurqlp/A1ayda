@@ -1,0 +1,23 @@
+/* AYDA A1 Express 2026 · Eğitim odaklı kurumsal son rötuş.
+   İçeriğe, alıştırma motoruna, cevap anahtarına, kayıtlı ilerlemeye dokunmaz. */
+:root{
+  --navy:#0b1b31;--navy2:#102541;--blue:#214d75;
+  --ink:#142b44;--muted:#536779;--gold:#e8c37b;
+  --bg:#fbf9f5;--paper:#fff;--line:#dbe3ea;
+  --soft:#edf5fb;--accent:#19776b;--good:#117d62;--bad:#a6504b;
+  color-scheme:light;
+}
+html{scroll-behavior:smooth;text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.top{background:var(--navy);color:#fff;border-bottom:1px solid #ffffff1c}
+.logomark{border-color:var(--gold);color:var(--gold)}
+a{color:var(--blue)}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-primary:hover{background:#173b60;color:#fff}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.card,.panel,.unit-card,.task-card,.question-card{border-color:var(--line)}
+:is(input,textarea,select){max-width:100%}
+:is(input,textarea,select):focus{outline-color:var(--blue)}
+@media(max-width:720px){body{font-size:16px}button,.btn{touch-action:manipulation}.top{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media print{body{background:white!important}.top,.sidebar,nav,.btn{box-shadow:none!important}*{-webkit-print-color-adjust:economy;print-color-adjust:economy}}
