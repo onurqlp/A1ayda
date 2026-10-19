@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1b31">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="AYDA lacivert ana sayfa ve hedefe göre kurs seçim akışının test önizlemesi.">
+<title>AYDA | Lacivert Ana Sayfa T Testi</title>
+<style>
+:root{--navy:#102541;--navy-deep:#0b1b31;--gold:#e8c37b;--gold-muted:#928056;--paper:#fbf9f5;--slate:#62738a;--border:#e4e5e6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--navy);line-height:1.55}
+a{text-decoration:none;color:inherit}button{font:inherit;cursor:pointer}
+.site-header{position:sticky;top:0;z-index:20;background:var(--navy-deep);border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 3px 16px rgba(16,37,65,.1)}
+.header-inner{max-width:1160px;min-height:92px;margin:0 auto;padding:12px 26px;display:flex;align-items:center;gap:24px}
+.identity{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:171px;flex:0 0 171px;line-height:1;min-width:0}
+.site-header .brand{display:block;width:171px;height:62px;flex:0 0 62px;max-width:100%;background-repeat:no-repeat;background-position:center center;background-size:contain;filter:none}
+.identity-sub{margin-top:-3px;display:block;color:var(--gold);text-align:center;white-space:nowrap;font-size:10px;line-height:1.35;font-weight:800;letter-spacing:.245em}
+.main-nav{margin-left:auto;display:flex;gap:5px;align-items:center}
+.main-nav a{font-size:13px;font-weight:650;padding:9px 10px;border-radius:8px;white-space:nowrap;color:#f0f3f7}
+.main-nav a:hover,.main-nav a:focus-visible{background:rgba(255,255,255,.12)}
+.header-actions{display:flex;align-items:center;gap:12px;margin-left:auto;flex:none}
+.cta{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:var(--gold);color:var(--navy-deep);padding:0 20px;min-height:50px;border-radius:11px;font-size:14px;font-weight:750;box-shadow:0 5px 16px rgba(16,37,65,.09);transition:background .15s ease}
+.cta:hover,.cta:focus-visible{background:#f2d69d}.cta-arrow{margin-left:8px;font-size:16px;font-weight:400}
+.menu-toggle{display:none;justify-content:center;align-items:center;flex-direction:column;gap:5px;width:48px;height:50px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.4);border-radius:11px;color:#fff;padding:0}
+.menu-toggle span{width:19px;height:2px;border-radius:2px;background:currentColor}
+.mobile-menu[hidden]{display:none!important}.mobile-menu{display:none}
+main{max-width:1160px;margin:auto;padding:24px 26px 76px}
+.preview-strip{display:flex;align-items:center;gap:9px;color:#426753;background:#edf6f0;border:1px solid #d9e9dd;padding:11px 14px;border-radius:9px;font-size:12px;font-weight:650;margin-bottom:21px}
+.preview-strip::before{content:"";display:inline-block;flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:#34855d}
+.hero{border-radius:19px;padding:55px 50px;min-height:342px;background:linear-gradient(116deg,#102541,#1a385a);color:white;display:grid;grid-template-columns:minmax(0,1fr) 190px;align-items:center;gap:32px;box-shadow:0 9px 26px #1025410c}
+.kicker{display:block;color:var(--gold);font-size:11px;font-weight:850;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.hero h1{margin:0 0 15px;max-width:690px;font-size:clamp(31px,4.2vw,47px);line-height:1.16;letter-spacing:-.035em}
+.hero p{color:#d9e3ed;font-size:15px;line-height:1.75;max-width:530px;margin:0 0 21px}
+.hero-link{display:inline-flex;align-items:center;border-radius:10px;background:var(--gold);color:var(--navy);font-size:14px;font-weight:800;min-height:44px;padding:10px 17px}
+.hero-aside{border-left:1px solid #ffffff38;padding:19px 0 19px 25px;color:#f5f7f9}
+.hero-aside strong{font-size:42px;letter-spacing:-.035em;line-height:1.2}
+.hero-aside small{display:block;color:#c8d6e3;line-height:1.55;margin-top:7px;font-size:12px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:32px 0 14px}.section-head h2{margin:0;font-size:21px;letter-spacing:-.02em}.section-head span{font-size:12px;color:#7d8794}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:#fff;border:1px solid #e8e6e0;border-radius:13px;padding:23px;min-height:137px}
+.card-title{display:block;font-size:15px;font-weight:800;margin-bottom:8px}.card p{font-size:13px;color:var(--slate);margin:0}
+.footer-note{margin-top:25px;border-top:1px solid #e6e4df;padding-top:15px;color:var(--slate);font-size:12px}
+@media(max-width:1030px){.main-nav{display:none}.header-actions{margin-left:auto}.menu-toggle{display:flex}.mobile-menu{display:grid;position:absolute;top:100%;left:0;right:0;background:var(--navy-deep);color:#fff;border-top:1px solid rgba(255,255,255,.15);padding:8px max(16px,calc((100vw - 1160px)/2 + 26px)) 16px;box-shadow:0 15px 25px #10254130}.mobile-menu a{display:block;padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.13);font-size:14px;font-weight:650;color:#f0f3f7}.mobile-menu .mobile-contact{color:var(--gold);font-weight:800}}
+@media(max-width:650px){.header-inner{min-height:85px;padding:12px 16px;gap:9px}.identity{width:141px;flex:0 0 141px}.site-header .brand{width:141px;height:51px;flex-basis:51px}.identity-sub{font-size:8.7px;letter-spacing:.19em;margin-top:-2px}.cta{min-height:47px;padding:0 13px;font-size:13px;border-radius:10px}.cta-arrow{margin-left:5px;font-size:14px}.menu-toggle{width:44px;height:47px;border-radius:10px}main{padding:15px 14px 50px}.hero{padding:31px 23px;border-radius:15px;grid-template-columns:1fr;gap:16px;min-height:unset}.hero h1{font-size:30px;line-height:1.2}.hero p{font-size:14px}.hero-aside{border-left:0;border-top:1px solid #ffffff2b;padding:13px 0 0;display:flex;align-items:baseline;gap:15px}.hero-aside strong{font-size:28px}.hero-aside small{margin:0}.cards{grid-template-columns:1fr;gap:11px}.card{padding:20px;min-height:0}.section-head{margin-top:24px}.section-head h2{font-size:19px}.preview-strip{font-size:11px}}
+@media(max-width:370px){.header-inner{padding:11px 10px;gap:7px}.identity{width:122px;flex-basis:122px}.site-header .brand{width:122px;height:45px;flex-basis:45px}.identity-sub{font-size:8px;letter-spacing:.13em}.cta{padding:0 10px;font-size:12px}.menu-toggle{width:40px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta{transition:none}}
+
+/* AYDA Onaylanan Kurumsal Header · 2026-10-20 · Tek Orijinal Logo */
+.utility-strip{background:#071728;color:#e6edf4;font-size:11px;letter-spacing:.025em;border-bottom:1px solid rgba(255,255,255,.08)}
+.utility-inner{max-width:1160px;min-height:33px;padding:7px 26px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;line-height:1.4}
+.utility-inner b{font-weight:800;color:#e8c37b;margin-left:5px}
+.utility-right{display:flex;align-items:center;gap:13px;color:#c5d2df}
+.utility-separator{height:12px;width:1px;background:rgba(255,255,255,.26)}
+.site-header{background:#0b1b31!important;border-bottom:1px solid rgba(232,195,123,.19)!important;box-shadow:0 9px 22px rgba(4,18,34,.10)!important}
+.header-inner{min-height:103px;gap:27px;padding:15px 26px}
+.identity{width:168px;flex:0 0 168px;gap:0}
+.site-header .brand{width:168px;height:61px;flex:0 0 61px;background-position:center;background-size:contain;filter:none!important}
+.identity-sub{margin-top:-2px;font-size:10.5px;letter-spacing:.24em;line-height:1.32;color:#e8c37b}
+.main-nav{margin-left:auto;gap:3px}
+.main-nav a{padding:11px 10px;color:#e6edf3;font-size:13px;font-weight:650;line-height:1.4;border-radius:9px}
+.main-nav a:hover,.main-nav a:focus-visible{background:rgba(255,255,255,.10)}
+.main-nav a[aria-current="page"]{color:#f5d69b}
+.main-nav .student-link{border:1px solid rgba(255,255,255,.3);margin-left:2px}
+.header-actions{margin-left:0;gap:10px}
+.cta{background:#e8c37b;color:#102541;padding:0 17px;min-height:47px;font-size:13px;border-radius:10px;font-weight:800;box-shadow:none}
+.cta:hover,.cta:focus-visible{background:#f5d99c}
+.menu-toggle{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.38);color:#fff}
+.mobile-menu{background:#0b1b31;color:#eef3f9;border-color:rgba(255,255,255,.16)}
+.mobile-menu a{color:#eef3f9;border-color:rgba(255,255,255,.13)}
+.mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(255,255,255,.09)}
+.mobile-menu .mobile-contact{color:#e8c37b;font-weight:800}
+:focus-visible{outline:2px solid #e8c37b;outline-offset:3px}
+@media(max-width:1110px){.header-inner{gap:18px}.main-nav a{padding:10px 7px;font-size:12.5px}}
+@media(max-width:1030px){
+ .header-inner{min-height:90px}
+ .header-actions{margin-left:auto}
+ .mobile-menu{background:#0b1b31}
+ .mobile-menu a{color:#f0f3f7}
+ .mobile-menu .mobile-contact{color:#e8c37b}
+}
+@media(max-width:650px){
+ .utility-inner{padding:6px 16px;min-height:29px;font-size:10px;gap:8px}
+ .utility-right{gap:0}
+ .utility-right .utility-separator,.utility-right span:last-child{display:none}
+ .header-inner{padding:12px 16px;min-height:82px;gap:9px}
+ .identity{width:137px;flex-basis:137px}
+ .site-header .brand{width:137px;height:50px;flex-basis:50px}
+ .identity-sub{font-size:8.6px;letter-spacing:.2em;margin-top:-1px}
+ .cta{padding:0 13px;min-height:45px;font-size:12.5px}
+ .menu-toggle{width:43px;height:45px}
+}
+@media(max-width:370px){
+ .utility-inner{padding:5px 10px;font-size:9px}
+ .header-inner{padding:10px;gap:7px}
+ .identity{width:122px;flex-basis:122px}
+ .site-header .brand{width:122px;height:45px;flex-basis:45px}
+ .identity-sub{font-size:8px;letter-spacing:.13em}
+ .cta{font-size:12px;padding:0 10px}
+ .menu-toggle{width:40px}
+}
+
+
+/* AYDA T / Homepage conversion preview. Header uses the approved A1 design unchanged. */
+#ana-icerik{max-width:1160px;margin:auto;padding:20px 26px 80px}
+.t-lead{max-width:910px;margin:36px auto 28px;text-align:center}
+.t-eyebrow{color:#94733f;font-size:11px;letter-spacing:.19em;font-weight:850;text-transform:uppercase}
+.t-lead h1{margin:12px auto 16px;max-width:790px;font-size:clamp(31px,5vw,56px);line-height:1.12;letter-spacing:-.045em}
+.t-lead p{color:#607183;margin:0 auto;max-width:660px;font-size:clamp(14px,2vw,17px);line-height:1.65}
+.t-highlights{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:23px auto 0}
+.t-highlights span{font-size:12px;font-weight:650;border:1px solid #e1ded7;background:#fff;padding:8px 12px;border-radius:100px;color:#516170}
+.t-wizard{max-width:860px;margin:25px auto 0;border:1px solid #e0e3e5;background:#fff;box-shadow:0 14px 54px rgba(14,34,53,.05);border-radius:19px;overflow:hidden;scroll-margin-top:160px}
+.t-wizard-top{display:flex;align-items:center;justify-content:space-between;padding:18px 29px;background:#102541;color:#f2f5f8;gap:14px}
+.t-wizard-top span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:#e8c37b}
+.t-wizard-top strong{font-size:12px;font-weight:650;color:#d4dfe7}
+.t-wizard-body{padding:27px 29px 25px;min-height:345px}
+.t-progress{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:23px}
+.t-progress i{height:4px;background:#e6e7e7;border-radius:6px}
+.t-progress i.active{background:#c9a668}
+.t-step{display:none;animation:t-in .18s ease}
+.t-step.active{display:block}
+.t-step h2{font-size:clamp(24px,3vw,32px);line-height:1.2;letter-spacing:-.03em;margin:0 0 9px}
+.t-step .t-hint{color:#687483;font-size:14px;margin:0 0 22px}
+.t-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.t-option{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:8px;background:#fff;border:1px solid #dce1e4;border-radius:12px;padding:17px 16px;min-height:110px;font:inherit;color:#102541;text-align:left;line-height:1.3;transition:border-color .12s ease,background .12s ease;min-width:0;overflow-wrap:anywhere}
+.t-option:hover,.t-option:focus-visible{background:#fbf9f5;border-color:#b39b70;outline:2px solid transparent}
+.t-option .t-no{font-size:12px;color:#a68c5f;font-weight:750}
+.t-option b{font-size:16px;line-height:1.25}
+.t-option small{font-size:12px;line-height:1.4;color:#697784;font-weight:400}
+.t-foot{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.t-back{border:0;background:transparent;color:#53667b;text-decoration:underline;cursor:pointer;padding:7px 2px}
+.t-back[hidden]{display:none}
+.t-count{font-size:12px;color:#79838a}
+.t-result{background:#f7f7f4;border:1px solid #e1dfd7;padding:19px;border-radius:12px;margin-bottom:19px}
+.t-result strong{font-size:19px;color:#102541;display:block}
+.t-result p{font-size:13px;color:#586a79;margin:8px 0 0}
+.t-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end}
+.t-field{min-width:0}
+.t-field label{font-size:13px;display:block;font-weight:750;margin:0 0 7px}
+.t-field input{width:100%;display:block;min-width:0;border:1px solid #c3cbd1;border-radius:9px;padding:12px 14px;font:inherit;font-size:15px;color:#102541;background:white}
+.t-primary{grid-column:1/-1;border:0;border-radius:10px;min-height:49px;background:#1b795c;color:white;font:inherit;font-size:15px;font-weight:780;cursor:pointer}
+.t-privacy{grid-column:1/-1;font-size:11px;line-height:1.55;color:#75808a}
+.t-below{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:860px;margin:20px auto}
+.t-feature{border-radius:12px;background:#f2f1ed;border:1px solid #e6e2d9;padding:19px}
+.t-feature strong{font-size:14px;display:block;margin-bottom:4px;color:#102541}
+.t-feature p{font-size:12px;color:#627282;margin:0;line-height:1.55}
+.t-end{text-align:center;margin:28px auto;color:#7b858f;font-size:12px;max-width:760px}
+@keyframes t-in{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){
+ #ana-icerik{padding:11px 14px 74px}
+ .t-lead{margin:24px auto 19px;text-align:left}
+ .t-lead h1{font-size:clamp(31px,8.2vw,39px);margin:11px 0 12px}
+ .t-lead p{font-size:14px}
+ .t-highlights{justify-content:flex-start;gap:6px;margin-top:15px}
+ .t-highlights span{font-size:10.5px;padding:6px 9px}
+ .t-wizard{border-radius:13px;margin-top:20px;scroll-margin-top:127px}
+ .t-wizard-top{padding:12px 15px}
+ .t-wizard-top span{font-size:10px}
+ .t-wizard-top strong{font-size:11px}
+ .t-wizard-body{padding:18px 14px 13px;min-height:unset}
+ .t-step h2{font-size:25px}
+ .t-step .t-hint{font-size:13px;margin-bottom:15px}
+ .t-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .t-option{padding:13px 11px;min-height:91px;gap:5px}
+ .t-option b{font-size:14px}
+ .t-option small{font-size:11px}
+ .t-foot{margin-top:15px}
+ .t-form{grid-template-columns:1fr;gap:10px}
+ .t-feature{padding:15px}
+ .t-below{grid-template-columns:1fr;gap:8px}
+ .t-result{padding:15px}
+}
+@media(max-width:370px){.t-option{padding:12px 9px}.t-option b{font-size:13px}.t-option small{font-size:10.5px}.t-highlights span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.t-step{animation:none}}
+
+</style>
+<script defer src="../ayda-brand.js"></script>
+<script defer src="./brand-test.js"></script>
+</head>
+<body>
+<div class="utility-strip" aria-label="AYDA eğitim bilgileri">
+  <div class="utility-inner">
+    <span>Online Almanca Eğitimi <b>A1 – C1</b></span>
+    <span class="utility-right"><span>2019'dan beri</span><span class="utility-separator" aria-hidden="true"></span><span>Canlı Ders · Sınav Hazırlığı · Dijital Kaynaklar</span></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://www.aydadil.com/" class="identity" aria-label="AYDA Dil Akademisi ana sayfa">
+      <span class="brand" aria-hidden="true"></span>
+      <span class="identity-sub">DİL AKADEMİSİ</span>
+    </a>
+    <nav class="main-nav" aria-label="Ana menü">
+      <a href="https://www.aydadil.com/" aria-current="page">Ana Sayfa</a>
+      <a href="https://www.aydadil.com/#kurslar">Almanca Kursları</a>
+      <a href="https://www.aydadil.com/#sinav">Sınav Hazırlığı</a>
+      <a href="https://www.aydadil.com/bibliothek/">Kütüphane</a>
+      <a class="student-link" href="https://www.aydadil.com/a1ayda/">Öğrenci Girişi</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cta" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="AYDA Dil Akademisine WhatsApp üzerinden yazın">Bize yazın <span class="cta-arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav id="mobileMenu" class="mobile-menu" aria-label="Mobil menü" hidden>
+    <a href="https://www.aydadil.com/">Ana Sayfa</a>
+    <a href="https://www.aydadil.com/#kurslar">Almanca Kursları</a>
+    <a href="https://www.aydadil.com/#sinav">Sınav Hazırlığı</a>
+    <a href="https://www.aydadil.com/bibliothek/">Dijital Kütüphane</a>
+    <a href="https://www.aydadil.com/a1ayda/">Öğrenci Girişi</a>
+    <a class="mobile-contact" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">Bize yazın ↗</a>
+  </nav>
+</header>
+<main id="ana-icerik">
+<div class="preview-strip" role="status">T test sayfası — Mevcut WordPress ana sayfası ve öğrenci sistemleri değişmedi.</div>
+<section class="t-lead">
+ <span class="t-eyebrow">AYDA DİL AKADEMİSİ · ONLINE ALMANCA</span>
+ <h1>Almanca hedefin ne? Sana uygun kursu bulalım.</h1>
+ <p>Almanya'da yeni bir hayat, iş, üniversite veya sınav hedefi… Üç küçük seçim yap, hangi programla başlaman gerektiğini birlikte netleştirelim.</p>
+ <div class="t-highlights"><span>Canlı ders</span><span>Konuşma pratiği</span><span>Ders kayıtları</span><span>A1–B2 kurslar</span></div>
+</section>
+<section id="kurs-plani" class="t-wizard" aria-labelledby="wizard-title">
+ <div class="t-wizard-top"><span>Kişisel kurs yönlendirmesi</span><strong id="t-step-label" aria-live="polite">1 / 4 · Hedefin</strong></div>
+ <div class="t-wizard-body">
+  <div class="t-progress" aria-hidden="true"><i class="active"></i><i></i><i></i><i></i></div>
+  <div class="t-step active" data-step="0"><h2 id="wizard-title">Almancayı neden öğreniyorsun?</h2><p class="t-hint">Hedefini seçtiğinde hemen bir sonraki soruya geçeceksin.</p>
+   <div class="t-options" data-field="goal">
+    <button type="button" class="t-option" data-value="Aile birleşimi"><span class="t-no">01</span><b>Aile birleşimi</b><small>A1 temeli ve sınav hazırlığı</small></button>
+    <button type="button" class="t-option" data-value="Almanya'da çalışmak"><span class="t-no">02</span><b>Almanya’da çalışmak</b><small>Günlük ve mesleki Almanca</small></button>
+    <button type="button" class="t-option" data-value="Ausbildung"><span class="t-no">03</span><b>Ausbildung</b><small>Mesleki eğitim hedefi</small></button>
+    <button type="button" class="t-option" data-value="Üniversite"><span class="t-no">04</span><b>Üniversite</b><small>Akademik dil planı</small></button>
+    <button type="button" class="t-option" data-value="ÖSD / telc / Goethe"><span class="t-no">05</span><b>ÖSD / telc / Goethe</b><small>Sınav odaklı hazırlık</small></button>
+    <button type="button" class="t-option" data-value="Genel Almanca"><span class="t-no">06</span><b>Genel Almanca</b><small>Temel ve konuşma gelişimi</small></button>
+   </div>
+  </div>
+  <div class="t-step" data-step="1"><h2 id="t-level-heading" tabindex="-1">Şu an Almanca seviyen nedir?</h2><p class="t-hint">Bilmiyorsan “Emin değilim” seçeneğine dokun.</p>
+   <div class="t-options" data-field="level">
+    <button type="button" class="t-option" data-value="Sıfırdan başlıyorum"><b>Sıfırdan başlıyorum</b><small>Hiç Almanca bilmiyorum</small></button>
+    <button type="button" class="t-option" data-value="A1"><b>A1</b><small>Başlangıç</small></button>
+    <button type="button" class="t-option" data-value="A2"><b>A2</b><small>Temel iletişim</small></button>
+    <button type="button" class="t-option" data-value="B1"><b>B1</b><small>Orta seviye</small></button>
+    <button type="button" class="t-option" data-value="B2"><b>B2</b><small>İleri seviye</small></button>
+    <button type="button" class="t-option" data-value="Emin değilim"><b>Emin değilim</b><small>Birlikte belirleyelim</small></button>
+   </div>
+  </div>
+  <div class="t-step" data-step="2"><h2 tabindex="-1">Nasıl ders almak istersin?</h2><p class="t-hint">Bir seçenek yeterli. İstersen danışmanımızla sonra değiştirebilirsin.</p>
+   <div class="t-options" data-field="lesson">
+    <button type="button" class="t-option" data-value="Canlı grup dersi"><b>Canlı grup dersi</b><small>Diğer öğrencilerle, öğretmen eşliğinde</small></button>
+    <button type="button" class="t-option" data-value="Özel ders"><b>Özel ders</b><small>Sana özel program</small></button>
+    <button type="button" class="t-option" data-value="Kararsızım"><b>Kararsızım</b><small>Öneri almak istiyorum</small></button>
+   </div>
+  </div>
+  <div class="t-step" data-step="3"><h2 tabindex="-1">Sana uygun ilk adım</h2>
+   <div class="t-result" aria-live="polite"><strong id="t-result-title">Ön değerlendirme</strong><p id="t-result-text"></p></div>
+   <p class="t-hint">Güncel başlangıç tarihini, kontenjanı ve ücreti WhatsApp üzerinden öğrenebilirsin.</p>
+   <form id="t-form" class="t-form">
+    <div class="t-field"><label for="t-name">Adın</label><input id="t-name" name="name" type="text" maxlength="70" autocomplete="given-name" placeholder="Adın" required></div>
+    <div class="t-field"><label for="t-phone">Telefon numaran (isteğe bağlı)</label><input id="t-phone" name="phone" type="tel" maxlength="25" autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX"></div>
+    <button type="submit" class="t-primary">Program ve fiyatı WhatsApp'tan sor ↗</button>
+    <p class="t-privacy">Form bu test sayfasında veri kaydetmez. Bilgilerin sadece cihazında WhatsApp mesajına eklenir; göndermeyi sen onaylarsın. Bu öneri resmî seviye veya sınav uygunluğu kararı değildir.</p>
+   </form>
+  </div>
+  <div class="t-foot"><button type="button" class="t-back" hidden>← Önceki adıma dön</button><span class="t-count" id="t-count">30 saniyelik ön yönlendirme</span></div>
+ </div>
+</section>
+<section class="t-below" aria-label="AYDA'da eğitim deneyimi">
+ <div class="t-feature"><strong>Canlı öğretmen desteği</strong><p>Konuları birlikte öğren, sorularını ders sırasında sor.</p></div>
+ <div class="t-feature"><strong>Ders kayıtları ve tekrar</strong><p>Kaçırdığın veya yeniden çalışmak istediğin derslere dön.</p></div>
+ <div class="t-feature"><strong>ÖSD · telc · Goethe</strong><p>Hedef sınavının formatına göre planlı hazırlık.</p></div>
+</section>
+<p class="t-end">Bu sayfa yalnızca AYDA'nın yeni ana sayfa ve lacivert üst bar tasarımının testidir. Nihai başvuru WhatsApp üzerinden gerçekleşir.</p>
+</main>
+<script>
+(()=>{
+const toggle=document.querySelector(".menu-toggle"),menu=document.getElementById("mobileMenu");
+if(!toggle||!menu)return;
+toggle.addEventListener("click",()=>{
+  const next=toggle.getAttribute("aria-expanded")!=="true";
+  toggle.setAttribute("aria-expanded",String(next));
+  toggle.setAttribute("aria-label",next?"Menüyü kapat":"Menüyü aç");
+  menu.hidden=!next;
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!menu.hidden){menu.hidden=true;toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","Menüyü aç");toggle.focus()}
+});
+})();
+</script>
+<script>
+(()=>{
+"use strict";
+const root=document.getElementById("kurs-plani");if(!root)return;
+const steps=[...root.querySelectorAll(".t-step")],bars=[...root.querySelectorAll(".t-progress i")],back=root.querySelector(".t-back");
+const state={goal:"",level:"",lesson:""};let current=0;
+const labels=["Hedefin","Seviyen","Ders tercihin","Önerin"];
+function show(n){current=n;steps.forEach((el,i)=>el.classList.toggle("active",i===n));bars.forEach((bar,i)=>bar.classList.toggle("active",i<=n));back.hidden=n===0;root.querySelector("#t-step-label").textContent=(n+1)+" / 4 · "+labels[n];root.querySelector("#t-count").textContent=n===3?"Son adım: WhatsApp mesajın hazır":"30 saniyelik ön yönlendirme";if(n===3){const course=state.level==="Emin değilim"?"Seviye değerlendirmesi":state.level==="Sıfırdan başlıyorum"?"A1 başlangıç programı":state.level+" programı";root.querySelector("#t-result-title").textContent="Ön öneri: "+course;root.querySelector("#t-result-text").textContent="Hedefin: "+state.goal+" · Ders tercihin: "+state.lesson+". Kesin uygunluk ve program AYDA danışmanıyla belirlenir.";}if(n>0)root.scrollIntoView({block:"start",behavior:"auto"});}
+root.querySelectorAll("[data-field]").forEach(grp=>grp.addEventListener("click",evt=>{const btn=evt.target.closest("button[data-value]");if(!btn||!grp.contains(btn))return;state[grp.dataset.field]=btn.dataset.value;show(Math.min(3,current+1));}));
+back.addEventListener("click",()=>show(Math.max(0,current-1)));
+root.querySelector("#t-form").addEventListener("submit",evt=>{evt.preventDefault();const name=root.querySelector("#t-name").value.trim(),phone=root.querySelector("#t-phone").value.trim();if(!name){root.querySelector("#t-name").focus();return;}const message=["Merhaba AYDA Dil Akademisi, ben "+name+".","Almanca hedefim: "+state.goal,"Şu anki seviyem: "+state.level,"Ders tercihim: "+state.lesson,phone?"Telefonum: "+phone:"","Bana uygun kursun başlangıç tarihi, ders programı ve ücretini öğrenmek istiyorum."].filter(Boolean).join("\n");const link=document.createElement("a");link.href="https://wa.me/905409122503?text="+encodeURIComponent(message);link.target="_blank";link.rel="noopener noreferrer";document.body.appendChild(link);link.click();link.remove();});
+})();
+</script>
+</body>
+</html>
