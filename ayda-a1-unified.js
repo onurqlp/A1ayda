@@ -18,10 +18,10 @@
   }
   function attachRealBrand(){
     const data=window.AYDA_LOGO_DATA;
-    if(!data||!data.startsWith("data:image/png;base64,"))return;
+    if(!data||!(data.startsWith("data:image/png;base64,")||data.startsWith("https://www.aydadil.com/wp-content/uploads/")))return;
     const login=$("#aydaLoginBox .ayda-login-logo");
     if(login&&login.style.backgroundImage!=="url(\""+data+"\")"){
-      login.style.backgroundImage="url("+data+")";
+      login.style.backgroundImage="none";
       login.setAttribute("aria-label","AYDA Dil Akademisi");
     }
     const brand=$(".site-header .brand");
