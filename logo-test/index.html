@@ -47,36 +47,98 @@ main{max-width:1160px;margin:auto;padding:24px 26px 76px}
 @media(max-width:650px){.header-inner{min-height:85px;padding:12px 16px;gap:9px}.identity{width:141px;flex:0 0 141px}.site-header .brand{width:141px;height:51px;flex-basis:51px}.identity-sub{font-size:8.7px;letter-spacing:.19em;margin-top:-2px}.cta{min-height:47px;padding:0 13px;font-size:13px;border-radius:10px}.cta-arrow{margin-left:5px;font-size:14px}.menu-toggle{width:44px;height:47px;border-radius:10px}main{padding:15px 14px 50px}.hero{padding:31px 23px;border-radius:15px;grid-template-columns:1fr;gap:16px;min-height:unset}.hero h1{font-size:30px;line-height:1.2}.hero p{font-size:14px}.hero-aside{border-left:0;border-top:1px solid #ffffff2b;padding:13px 0 0;display:flex;align-items:baseline;gap:15px}.hero-aside strong{font-size:28px}.hero-aside small{margin:0}.cards{grid-template-columns:1fr;gap:11px}.card{padding:20px;min-height:0}.section-head{margin-top:24px}.section-head h2{font-size:19px}.preview-strip{font-size:11px}}
 @media(max-width:370px){.header-inner{padding:11px 10px;gap:7px}.identity{width:122px;flex-basis:122px}.site-header .brand{width:122px;height:45px;flex-basis:45px}.identity-sub{font-size:8px;letter-spacing:.13em}.cta{padding:0 10px;font-size:12px}.menu-toggle{width:40px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cta{transition:none}}
+
+/* AYDA Onaylanan Kurumsal Header · 2026-10-20 · Tek Orijinal Logo */
+.utility-strip{background:#071728;color:#e6edf4;font-size:11px;letter-spacing:.025em;border-bottom:1px solid rgba(255,255,255,.08)}
+.utility-inner{max-width:1160px;min-height:33px;padding:7px 26px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;line-height:1.4}
+.utility-inner b{font-weight:800;color:#e8c37b;margin-left:5px}
+.utility-right{display:flex;align-items:center;gap:13px;color:#c5d2df}
+.utility-separator{height:12px;width:1px;background:rgba(255,255,255,.26)}
+.site-header{background:#0b1b31!important;border-bottom:1px solid rgba(232,195,123,.19)!important;box-shadow:0 9px 22px rgba(4,18,34,.10)!important}
+.header-inner{min-height:103px;gap:27px;padding:15px 26px}
+.identity{width:168px;flex:0 0 168px;gap:0}
+.site-header .brand{width:168px;height:61px;flex:0 0 61px;background-position:center;background-size:contain;filter:none!important}
+.identity-sub{margin-top:-2px;font-size:10.5px;letter-spacing:.24em;line-height:1.32;color:#e8c37b}
+.main-nav{margin-left:auto;gap:3px}
+.main-nav a{padding:11px 10px;color:#e6edf3;font-size:13px;font-weight:650;line-height:1.4;border-radius:9px}
+.main-nav a:hover,.main-nav a:focus-visible{background:rgba(255,255,255,.10)}
+.main-nav a[aria-current="page"]{color:#f5d69b}
+.main-nav .student-link{border:1px solid rgba(255,255,255,.3);margin-left:2px}
+.header-actions{margin-left:0;gap:10px}
+.cta{background:#e8c37b;color:#102541;padding:0 17px;min-height:47px;font-size:13px;border-radius:10px;font-weight:800;box-shadow:none}
+.cta:hover,.cta:focus-visible{background:#f5d99c}
+.menu-toggle{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.38);color:#fff}
+.mobile-menu{background:#0b1b31;color:#eef3f9;border-color:rgba(255,255,255,.16)}
+.mobile-menu a{color:#eef3f9;border-color:rgba(255,255,255,.13)}
+.mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(255,255,255,.09)}
+.mobile-menu .mobile-contact{color:#e8c37b;font-weight:800}
+:focus-visible{outline:2px solid #e8c37b;outline-offset:3px}
+@media(max-width:1110px){.header-inner{gap:18px}.main-nav a{padding:10px 7px;font-size:12.5px}}
+@media(max-width:1030px){
+ .header-inner{min-height:90px}
+ .header-actions{margin-left:auto}
+ .mobile-menu{background:#0b1b31}
+ .mobile-menu a{color:#f0f3f7}
+ .mobile-menu .mobile-contact{color:#e8c37b}
+}
+@media(max-width:650px){
+ .utility-inner{padding:6px 16px;min-height:29px;font-size:10px;gap:8px}
+ .utility-right{gap:0}
+ .utility-right .utility-separator,.utility-right span:last-child{display:none}
+ .header-inner{padding:12px 16px;min-height:82px;gap:9px}
+ .identity{width:137px;flex-basis:137px}
+ .site-header .brand{width:137px;height:50px;flex-basis:50px}
+ .identity-sub{font-size:8.6px;letter-spacing:.2em;margin-top:-1px}
+ .cta{padding:0 13px;min-height:45px;font-size:12.5px}
+ .menu-toggle{width:43px;height:45px}
+}
+@media(max-width:370px){
+ .utility-inner{padding:5px 10px;font-size:9px}
+ .header-inner{padding:10px;gap:7px}
+ .identity{width:122px;flex-basis:122px}
+ .site-header .brand{width:122px;height:45px;flex-basis:45px}
+ .identity-sub{font-size:8px;letter-spacing:.13em}
+ .cta{font-size:12px;padding:0 10px}
+ .menu-toggle{width:40px}
+}
+
 </style>
 <script defer src="../ayda-brand.js"></script>
 <script defer src="./brand-test.js"></script>
 </head>
 <body>
+<div class="utility-strip" aria-label="AYDA eğitim bilgileri">
+  <div class="utility-inner">
+    <span>Online Almanca Eğitimi <b>A1 – C1</b></span>
+    <span class="utility-right"><span>2019'dan beri</span><span class="utility-separator" aria-hidden="true"></span><span>Canlı Ders · Sınav Hazırlığı · Dijital Kaynaklar</span></span>
+  </div>
+</div>
 <header class="site-header">
-<div class="header-inner">
-<a href="https://www.aydadil.com/" class="identity" aria-label="AYDA Dil Akademisi ana sayfa">
-<span class="brand" aria-hidden="true"></span>
-<span class="identity-sub">DİL AKADEMİSİ</span>
-</a>
-<nav class="main-nav" aria-label="Ana menü">
-<a href="https://www.aydadil.com/">Ana Sayfa</a>
-<a href="https://www.aydadil.com/#kurslar">Kurslar</a>
-<a href="https://www.aydadil.com/#sistem">Eğitim Sistemi</a>
-<a href="https://www.aydadil.com/bibliothek/">Kütüphane</a>
-</nav>
-<div class="header-actions">
-<a class="cta" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="AYDA Dil Akademisine WhatsApp üzerinden yazın">Bize yazın <span class="cta-arrow" aria-hidden="true">↗</span></a>
-<button class="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
-</div>
-</div>
-<nav id="mobileMenu" class="mobile-menu" aria-label="Mobil menü" hidden>
-<a href="https://www.aydadil.com/">Ana Sayfa</a>
-<a href="https://www.aydadil.com/#kurslar">Kurslar ve Ücretler</a>
-<a href="https://www.aydadil.com/#sistem">Eğitim Sistemi</a>
-<a href="https://www.aydadil.com/bibliothek/">Kütüphane</a>
-<a href="https://www.aydadil.com/a1ayda/">Öğrenci Girişi</a>
-<a class="mobile-contact" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">Bize yazın ↗</a>
-</nav>
+  <div class="header-inner">
+    <a href="https://www.aydadil.com/" class="identity" aria-label="AYDA Dil Akademisi ana sayfa">
+      <span class="brand" aria-hidden="true"></span>
+      <span class="identity-sub">DİL AKADEMİSİ</span>
+    </a>
+    <nav class="main-nav" aria-label="Ana menü">
+      <a href="https://www.aydadil.com/" aria-current="page">Ana Sayfa</a>
+      <a href="https://www.aydadil.com/#kurslar">Almanca Kursları</a>
+      <a href="https://www.aydadil.com/#sinav">Sınav Hazırlığı</a>
+      <a href="https://www.aydadil.com/bibliothek/">Kütüphane</a>
+      <a class="student-link" href="https://www.aydadil.com/a1ayda/">Öğrenci Girişi</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cta" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="AYDA Dil Akademisine WhatsApp üzerinden yazın">Bize yazın <span class="cta-arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav id="mobileMenu" class="mobile-menu" aria-label="Mobil menü" hidden>
+    <a href="https://www.aydadil.com/">Ana Sayfa</a>
+    <a href="https://www.aydadil.com/#kurslar">Almanca Kursları</a>
+    <a href="https://www.aydadil.com/#sinav">Sınav Hazırlığı</a>
+    <a href="https://www.aydadil.com/bibliothek/">Dijital Kütüphane</a>
+    <a href="https://www.aydadil.com/a1ayda/">Öğrenci Girişi</a>
+    <a class="mobile-contact" href="https://wa.me/905409122503?text=Merhaba%20AYDA%20Dil%20Akademisi%2C%20Almanca%20kurslar%C4%B1n%C4%B1z%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">Bize yazın ↗</a>
+  </nav>
 </header>
 <main>
 <div class="preview-strip">Tasarım önizlemesi — Canlı ana sayfa ve eğitim sayfaları değiştirilmedi.</div>
