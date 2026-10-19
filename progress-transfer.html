@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AYDA A1 — Eski İlerlemeyi Aktar</title>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f1f5fa;font:16px/1.5 system-ui;color:#173350}.wrap{max-width:430px;margin:20px;padding:28px;border-radius:20px;background:white;box-shadow:0 12px 35px #18304b22}h1{font-size:23px;margin-top:0}button{background:#102541;color:#fff;border:0;border-radius:10px;padding:14px 20px;min-height:48px;font:700 15px system-ui;cursor:pointer;width:100%}p{color:#526981}#msg{font-size:14px;font-weight:700}</style></head><body>
+<main class="wrap"><h1>AYDA A1 · Eski ilerlemeni aktar</h1><p>Eski A1 çalışma kaydını AYDA'nın kendi sitesine güvenli biçimde göndermek için aşağıdaki butona bas. Ders parolası veya başka bilgiler aktarılmaz.</p><button type="button" id="send">İlerlememi yeni siteye aktar</button><p id="msg" role="status" aria-live="polite"></p></main>
+<script>
+(function(){
+  'use strict';
+  const msg=document.getElementById('msg');
+  document.getElementById('send').addEventListener('click',function(){
+    if(!window.opener){msg.textContent='Bu sayfayı AYDA A1 sayfasındaki “Eski A1 ilerlememi aktar” düğmesinden açın.';return;}
+    let saved;try{saved=localStorage.getItem('ayda-a1-progress-v3')}catch(e){}
+    if(!saved){msg.textContent='Bu tarayıcıda eski A1 ilerleme kaydı bulunamadı.';return;}
+    try{const d=JSON.parse(saved);if(typeof d.lastUnit!=='number'||!d.units||typeof d.units!=='object'){msg.textContent='Kayıt biçimi doğrulanamadı.';return;}}catch(e){msg.textContent='İlerleme kaydı okunamadı.';return;}
+    window.opener.postMessage({protocol:'AYDA_A1_PROGRESS_V1',progress:saved},'https://www.aydadil.com');
+    msg.textContent='Aktarım gönderildi. Yeni AYDA sekmesine dönüp ilerlemeni kontrol et.';
+  });
+})();
+</script></body></html>
