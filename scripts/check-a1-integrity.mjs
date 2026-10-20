@@ -20,8 +20,8 @@ assert.equal(root.split(expressShortcut).length,2,"Expected exactly one Express 
 // Normalize only the approved October 2026 AYDA logo presentation changes.
 // Course bundles, preview snapshots and all protected lesson content remain checksum-gated.
 const normalizedLogoRoot=root
-  .replace(/\\s*<style id="ayda-a1-official-logo">[\\s\\S]*?<\\/style>/,"\\n  ")
-  .replace(/<div class="ayda-login-logo"><img [^>]+><\\/div>/,'<div class="ayda-login-logo">AY</div>');
+  .replace(/\s*<style id="ayda-a1-official-logo">[\s\S]*?<\/style>/,"\n  ")
+  .replace(/<div class="ayda-login-logo"><img [^>]+><\/div>/,'<div class="ayda-login-logo">AY</div>');
 const approvedRoot=normalizedLogoRoot.replace(expressShortcut,"");
 const previewHtml=read("preview/index.html").toString("utf8");
 const expectedLive=previewHtml.replace('    <meta name="robots" content="noindex,nofollow" />\n',"");
