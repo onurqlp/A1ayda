@@ -27,7 +27,7 @@ jobs:
             for name,w,h in [('desktop',1440,900),('mobile',390,844)]:
               d.set_window_size(w,h)
               d.get('https://onurqlp.github.io/A1ayda/g3-onizleme/?qa='+str(time.time()))
-              time.sleep(4)
+              time.sleep(6)
               z=d.execute_script("""const logo=document.querySelector('.g3-logo img');const box=document.querySelector('#aydaLoginBox');return {title:document.title,header:!!document.querySelector('.g3-header'),logo:!!logo&&logo.complete&&logo.naturalWidth>0,logoWidth:logo?.getBoundingClientRect().width,login:!!box&&getComputedStyle(box).display!=='none',field:!!document.querySelector('#aydaPasswordInput'),root:!!document.querySelector('#root'),overflow:document.documentElement.scrollWidth-innerWidth,error:document.querySelector('#aydaLoginMessage')?.textContent}""")
               print(json.dumps({'screen':name,'checks':z},ensure_ascii=False),flush=True)
               d.save_screenshot('/tmp/g3/'+name+'.png')
