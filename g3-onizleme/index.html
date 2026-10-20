@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1b31" />
+    <meta name="description" content="AYDA A1 için 24 ünitede kısa ve özgün Almanca alıştırmaları." />
+    <meta property="og:title" content="AYDA A1 Online Alıştırma" />
+    <meta property="og:description" content="Almancayı mantığıyla öğren." />
+    <link rel="icon" type="image/png" href="../og.png" />
+    <title>AYDA A1 Online Alıştırma</title>
+    <style>
+      #aydaLoginBox {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        display: grid;
+        place-items: center;
+        min-height: 100dvh;
+        padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+        overflow-y: auto;
+        background:
+          radial-gradient(circle at top left, rgba(35, 64, 120, 0.14), transparent 34%),
+          linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: #1f2937;
+      }
+
+      #aydaLoginBox .ayda-login-card {
+        width: min(100%, 430px);
+        background: #ffffff;
+        border: 1px solid #dce3f0;
+        border-radius: 28px;
+        padding: clamp(22px, 5vw, 30px);
+        box-shadow: 0 20px 50px rgba(35, 64, 120, 0.18);
+      }
+
+      #aydaLoginBox .ayda-login-logo {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 16px;
+        border-radius: 18px;
+        background: #234078;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      #aydaLoginBox h1 {
+        margin: 0 0 8px;
+        color: #172b52;
+        font-size: clamp(22px, 6vw, 25px);
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+      }
+
+      #aydaLoginBox p {
+        margin: 0 0 18px;
+        color: #6b7280;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      #aydaLoginBox .ayda-password-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      #aydaPasswordInput {
+        flex: 1;
+        min-width: 0;
+        min-height: 50px;
+        border: 1px solid #dce3f0;
+        border-radius: 16px;
+        padding: 14px 15px;
+        background: #ffffff;
+        color: #1f2937;
+        font: inherit;
+        font-size: 16px;
+        outline: none;
+      }
+
+      #aydaPasswordInput:focus {
+        border-color: #234078;
+        box-shadow: 0 0 0 4px rgba(35, 64, 120, 0.10);
+      }
+
+      #aydaLoginBox .ayda-login-btn {
+        min-height: 50px;
+        border: 0;
+        border-radius: 16px;
+        padding: 0 18px;
+        background: #234078;
+        color: #ffffff;
+        font: inherit;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      #aydaLoginBox .ayda-login-btn:hover { background: #172b52; }
+      #aydaLoginBox .ayda-login-btn:focus-visible { outline: 3px solid #79a7f0; outline-offset: 3px; }
+
+      #aydaLoginMessage {
+        min-height: 18px;
+        margin-top: 12px;
+        color: #dc2626;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      #aydaProtectedContent { display: none; }
+
+      @media (max-width: 680px) {
+        #aydaLoginBox .ayda-password-row { flex-direction: column; }
+        #aydaLoginBox .ayda-login-btn { padding: 14px 18px; }
+      }
+
+      @media (max-width: 360px) {
+        #aydaLoginBox { padding: 12px; }
+        #aydaLoginBox .ayda-login-card { border-radius: 20px; padding: 20px; }
+      }
+
+      @media (max-height: 520px) and (orientation: landscape) {
+        #aydaLoginBox { place-items: start center; }
+        #aydaLoginBox .ayda-login-logo { width: 46px; height: 46px; margin-bottom: 10px; border-radius: 14px; }
+      }
+    </style>
+    <script type="module" crossorigin src="../assets/index-DRCE9iGL.js"></script>
+    <link rel="stylesheet" crossorigin href="../assets/index-OVjCbFV6.css">
+    <link rel="stylesheet" href="../ayda-a1-hybrid.css">
+    <link rel="stylesheet" href="../ayda-a1-unified.css">
+    <link rel="stylesheet" href="../ayda-a1-b1-parity.css">
+  <style id="ayda-a1-official-logo">
+#aydaLoginBox .ayda-login-logo,#aydaLoginBox .ayda-login-logo[style]{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:220px!important;height:auto!important;min-height:64px!important;margin:0 auto 16px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;background-image:none!important;box-shadow:none!important}
+#aydaLoginBox .ayda-login-logo img{display:block!important;width:100%!important;max-width:200px!important;height:auto!important;aspect-ratio:134/49!important;object-fit:contain!important;object-position:center!important}
+body.ayda-a1-logo-ready .site-header .brand{width:134px!important;min-width:134px!important;height:49px!important;max-width:45vw!important;flex:0 0 134px!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;overflow:visible!important}
+@media(max-width:650px){body.ayda-a1-logo-ready .site-header .brand{width:112px!important;min-width:112px!important;flex-basis:112px!important;height:41px!important}}
+</style>
+<style id="g3-corporate-preview">
+:root{--ayda:#234078;--ayda-deep:#172b52;--ayda-bg:#f6f8fc;--ayda-line:#dfe7f2}
+body{background:#f6f8fc!important;color:#172b52}
+#aydaLoginBox{position:fixed!important;inset:0!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;overflow:auto!important;padding:0 0 35px!important;background:#f6f8fc!important;z-index:999999!important}
+#aydaLoginBox[hidden],#aydaLoginBox[style*="display: none"]{display:none!important}
+.g3-header{display:block!important;flex:none;width:100%;background:#234078;color:white}
+.g3-wrap{width:min(1180px,100%);padding:0 22px;margin:auto}
+.g3-strip{background:#172b52}
+.g3-strip .g3-wrap{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:32px;font-size:11px}
+.g3-strip a,.g3-nav a{color:white;text-decoration:none}
+.g3-nav{min-height:94px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.g3-logo{flex:0 0 185px;max-width:42vw}
+.g3-logo img{display:block!important;width:185px;max-width:100%;height:auto;object-fit:contain;aspect-ratio:134/49}
+.g3-nav nav{display:flex;flex:1;justify-content:center;gap:20px}
+.g3-nav nav a,.g3-web{font-size:13px;font-weight:750;white-space:nowrap}
+.g3-web{border:1px solid #ffffff55;border-radius:12px;padding:12px 16px}
+#aydaLoginBox .ayda-login-card{margin:clamp(25px,6vh,65px) auto 30px!important;width:min(calc(100% - 30px),510px)!important;border:1px solid #dfe7f2!important;border-radius:22px!important;background:#fff!important;box-shadow:0 14px 42px #172b5210!important;padding:clamp(25px,5vw,40px)!important}
+#aydaLoginBox .ayda-login-logo{max-width:220px!important;min-height:68px!important}
+#aydaLoginBox h1{color:#172b52!important;font-size:clamp(24px,4vw,31px)!important}
+#aydaLoginBox p{color:#667085!important}
+#aydaLoginBox input{border-radius:12px!important;border-color:#c9d6e9!important;min-height:54px}
+#aydaLoginBox .ayda-login-btn{background:#234078!important;border-radius:12px!important;min-height:52px}
+#aydaLoginBox .ayda-login-btn:hover{background:#172b52!important}
+body.ayda-a1-logo-ready .site-header,body[data-ayda-a1-b1-view] .site-header{background:#234078!important}
+body[data-ayda-a1-b1-view] .site-header{border-bottom-color:#172b5250}
+body[data-ayda-a1-b1-view] .site-header button,body[data-ayda-a1-b1-view] .site-header a{border-radius:12px}
+@media(max-width:820px){.g3-nav nav{display:none}.g3-nav{min-height:79px}}
+@media(max-width:540px){.g3-wrap{padding:0 15px}.g3-strip .g3-wrap{font-size:9px}.g3-nav{min-height:72px}.g3-logo{flex-basis:130px}.g3-logo img{width:130px}.g3-web{padding:10px 11px;font-size:11px}#aydaLoginBox .ayda-login-card{margin:22px auto!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+  <body>
+
+    <section id="aydaLoginBox" aria-label="AYDA giriş ekranı">
+      <header class="g3-header"><div class="g3-strip"><div class="g3-wrap"><span>AYDA DİL AKADEMİSİ · DİJİTAL ÖĞRENME</span><a href="https://www.aydadil.com/">Kurumsal web sitesi ↗</a></div></div><div class="g3-nav g3-wrap"><a class="g3-logo" href="https://ders.aydadil.com/" aria-label="AYDA Öğrenci Portalı"><img src="https://www.aydadil.com/wp-content/uploads/2026/10/ayda-home-v89-baa791945bb954a30b.png" alt="AYDA Dil Akademisi logosu" width="134" height="49"></a><nav aria-label="AYDA platformları"><a href="https://ders.aydadil.com/">Öğrenci Portalı</a><a href="https://www.aydadil.com/bibliothek/">Kütüphane</a><a href="https://www.aydadil.com/sinavhazirlik/">Sınav Hazırlık</a></nav><a href="https://www.aydadil.com/" class="g3-web">AYDA Ana Sayfa ↗</a></div></header>
+      <div class="ayda-login-card">
+        <div class="ayda-login-logo"><img src="https://www.aydadil.com/wp-content/uploads/2026/10/ayda-home-v89-baa791945bb954a30b.png" alt="AYDA Dil Akademisi logosu" width="134" height="49" decoding="async"></div>
+        <h1>AYDA A1 Online Alıştırma</h1>
+        <p>Devam etmek için size verilen sınıf kodunu veya giriş parolasını yazınız.</p>
+
+        <form class="ayda-password-row" onsubmit="aydaCheckPassword(); return false;">
+          <input
+            id="aydaPasswordInput"
+            type="password"
+            placeholder="Giriş parolası"
+            autocomplete="off"
+            aria-describedby="aydaLoginMessage"
+          />
+          <button class="ayda-login-btn" type="submit">Giriş</button>
+        </form>
+
+        <div id="aydaLoginMessage" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <div id="aydaProtectedContent">
+      <div id="root"></div>
+    </div>
+
+    <script defer src="../ayda-brand.js"></script>
+    <script defer src="../ayda-a1-hybrid.js"></script>
+    <script defer src="../ayda-a1-unified.js"></script>
+    <script defer src="../ayda-a1-b1-parity.js"></script>
+    <script defer src="../ayda-express-shortcut.js"></script>
+    <script
+      src="https://onurqlp.github.io/ayda-pass/access-control.js"
+      onerror="document.getElementById('aydaLoginMessage').textContent='Şifre sistemi yüklenemedi.'"
+    ></script>
+  </body>
+</html>
