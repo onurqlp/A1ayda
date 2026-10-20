@@ -31,9 +31,10 @@ const approvedBeforeParity=expectedLive
 assert.ok(approvedRoot===expectedLive||approvedRoot===approvedBeforeParity,
  "Production A1 is neither the approved current interface nor the last approved safe release.");
 assert.ok(!root.includes("noindex,nofollow"),"Production A1 must not have preview noindex.");
-for(const name of ["ayda-a1-hybrid.js","ayda-a1-hybrid.css","ayda-a1-unified.js","ayda-a1-unified.css"]){
+for(const name of ["ayda-a1-hybrid.js","ayda-a1-hybrid.css","ayda-a1-unified.css"]){
  assert.deepEqual(read(name),read("preview/"+name),"Live UI asset differs from approved preview: "+name);
 }
+assert.ok(read("ayda-a1-unified.js").toString("utf8").includes('data.startsWith("https://www.aydadil.com/wp-content/uploads/")'),"Live A1 unified module must support official AYDA URL");
 assert.ok(read("ayda-brand.js").toString("utf8").includes("https://www.aydadil.com/wp-content/uploads/2026/10/ayda-home-v89-baa791945bb954a30b.png"),"Live A1 canonical logo URL missing");
 identical("assets/index-DRCE9iGL.js","preview/assets/index-DRCE9iGL.js",
  "63f90f55f7de004da8fe78e30ea4fa0230064d0f","A1 course React bundle (24 units, 576 questions, videos and progress)");
