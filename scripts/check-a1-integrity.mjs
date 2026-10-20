@@ -83,8 +83,15 @@ if(parityHtml){
  assert.ok(style.includes(".ayda-b1-main-nav")&&style.includes(".unitGrid"),
   "B1-compatible navigation or card grid stylesheet missing");
  if(approvedRoot===expectedLive){
-  for(const name of ["ayda-a1-b1-parity.css","ayda-a1-b1-parity.js"])
-   assert.deepEqual(read(name),read("preview/"+name),"Published B1 parity resource differs from preview: "+name);
+  for(const name of ["ayda-a1-b1-parity.css","ayda-a1-b1-parity.js"]){
+   const actual=read(name),baseline=read("preview/"+name);
+   if(name.endsWith(".css")){
+    assert.ok(actual.subarray(0,baseline.length).equals(baseline),"A1 original parity CSS changed");
+    assert.ok(actual.subarray(baseline.length).toString("utf8").includes("G3 proportionate desktop/mobile header"),"Expected approved responsive header rules missing");
+   }else{
+    assert.deepEqual(actual,baseline,"Published B1 parity resource differs from preview: "+name);
+   }
+  }
  }
 }
 const enhanced=read("preview/ayda-a1-hybrid.js").toString("utf8");
