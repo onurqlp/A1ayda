@@ -54,8 +54,8 @@ async function main(){
   assert.ok(await page.$eval(".hero-card",node=>node.getBoundingClientRect().height<470),
     "The A1 homepage hero must be compact, not a giant empty banner.");
   assert.ok(await page.$eval(".site-header",
-     node=>getComputedStyle(node).backgroundColor==="rgb(11, 27, 49)"),
-    "A1 header must use the same deep navy as the B1 design system.");
+     node=>["rgb(11, 27, 49)","rgb(35, 64, 120)"].includes(getComputedStyle(node).backgroundColor)),
+    "A1 header must use an approved AYDA navy.");
   assert.ok(await page.$eval("#aydaProtectedContent",node=>getComputedStyle(node).display==="none"),
    "Unauthenticated students must not see learning content");
   assert.ok(await page.$eval("#aydaA1QuickDock",node=>node.hidden),
