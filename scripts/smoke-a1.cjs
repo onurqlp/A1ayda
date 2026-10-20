@@ -45,9 +45,12 @@ async function main(){
   const locationPath=process.env.AYDA_TEST_PATH==="/"?"/":"/preview/";
   await page.goto("http://127.0.0.1:"+port+locationPath,{waitUntil:"domcontentloaded"});
   await page.waitForSelector(".hero-card .primary-button",{timeout:15000});
-  assert.ok(await page.$eval("#aydaLoginBox .ayda-login-logo",
-     node=>getComputedStyle(node).backgroundImage.includes("data:image/png")),
-    "Real AYDA logo should appear on protected entry card.");
+  const officialLogoOk = await page.$eval("#aydaLoginBox .ayda-login-logo", node=>{
+    const img=node.querySelector("img");
+    return img ? img.src==="https://www.aydadil.com/wp-content/uploads/2026/10/ayda-home-v89-baa791945bb954a30b.png"
+      : getComputedStyle(node).backgroundImage.includes("data:image/png");
+  });
+  assert.ok(officialLogoOk,"Real AYDA logo should appear on protected entry card.");
   assert.ok(await page.$eval(".hero-card",node=>node.getBoundingClientRect().height<470),
     "The A1 homepage hero must be compact, not a giant empty banner.");
   assert.ok(await page.$eval(".site-header",
